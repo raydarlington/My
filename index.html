@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ade Adesina</title>
+<style>
+  /* ============ RESET & BASE ============ */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    color: #111;
+    background: #fff;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: underline; }
+  img { display: block; max-width: 100%; }
+  button { font-family: inherit; cursor: pointer; }
+
+  /* ============ HEADER ============ */
+  header.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 24px;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 200;
+  }
+  .header-title {
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    text-align: center;
+    flex: 1;
+  }
+  .hamburger-btn {
+    width: 44px;
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
+  }
+  .hamburger-btn span {
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: #111;
+  }
+  .cart {
+    width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    font-size: 16px;
+  }
+  .cart svg { width: 22px; height: 22px; }
+
+  /* ============ NAV OVERLAY MENU ============ */
+  .nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: #fff;
+    z-index: 300;
+    display: none;
+    flex-direction: column;
+  }
+  .nav-overlay.open { display: flex; }
+  .nav-overlay-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 24px;
+  }
+  .nav-close-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    line-height: 1;
+    width: 44px;
+    text-align: left;
+  }
+  .nav-links {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 34px;
+    padding-bottom: 60px;
+  }
+  .nav-links a {
+    font-size: 34px;
+    text-decoration: none;
+    color: #111;
+    transition: opacity 0.2s ease;
+  }
+  .nav-links a:hover { opacity: 0.55; }
+  .nav-overlay-footer {
+    text-align: center;
+    padding: 20px 24px 32px;
+    font-size: 16px;
+  }
+
+  /* ============ PAGE SECTIONS (hash-nav) ============ */
+  .page {
+    display: none;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-bottom: 40px;
+  }
+  .page.active { display: block; }
+
+  /* ============ ABOUT PAGE ============ */
+  .about-hero-text {
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 1.15;
+    padding: 10px 24px 30px;
+  }
+  .about-body {
+    padding: 0 24px 20px;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .about-body p + p { margin-top: 18px; }
+  .about-body b { font-weight: 700; }
+  .about-links {
+    padding: 10px 24px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 17px;
+  }
+  .about-links a { width: max-content; }
+  .mailing-blurb {
+    padding: 20px 24px 10px;
+    font-size: 17px;
+  }
+
+  /* ============ FULL BLEED IMAGE ============ */
+  .full-bleed-img {
+    width: 100%;
+    display: block;
+  }
+  .full-bleed-img img { width: 100%; height: auto; object-fit: cover; }
+
+  figure.captioned {
+    margin: 0 0 26px;
+  }
+  figcaption {
+    text-align: right;
+    padding: 10px 24px 0;
+    font-size: 20px;
+  }
+
+  /* ============ WORKS PAGE ============ */
+  .page-title {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px 24px 20px;
+  }
+  .works-list img { width: 100%; margin-bottom: 4px; }
+
+  /* ============ EXHIBITIONS PAGE ============ */
+  .exhibitions-list img { width: 100%; margin-bottom: 4px; }
+
+  /* ============ CV PAGE ============ */
+  .cv-body {
+    padding: 0 24px 10px;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .cv-body p + p { margin-top: 18px; }
+  .cv-body b { font-weight: 700; }
+
+  .accordion {
+    border-top: 1px solid #ddd;
+    margin: 30px 0 0;
+  }
+  .accordion-item { border-bottom: 1px solid #ddd; }
+  .accordion-header {
+    width: 100%;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 24px;
+    font-size: 26px;
+    text-align: left;
+  }
+  .accordion-header .plus {
+    font-size: 26px;
+    font-weight: 300;
+    transition: transform 0.2s ease;
+  }
+  .accordion-item.open .accordion-header .plus { transform: rotate(45deg); }
+  .accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+    padding: 0 24px;
+    font-size: 16px;
+  }
+  .accordion-item.open .accordion-panel {
+    max-height: 600px;
+    padding-bottom: 20px;
+  }
+  .accordion-panel ul { list-style: none; }
+  .accordion-panel li { padding: 6px 0; }
+
+  /* ============ CONTACT PAGE ============ */
+  .contact-title {
+    font-size: 42px;
+    font-weight: 700;
+    padding: 30px 24px 10px;
+  }
+  .contact-address {
+    padding: 0 24px 20px;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  .contact-links {
+    padding: 0 24px 14px;
+    font-size: 18px;
+  }
+  .social-icons {
+    display: flex;
+    gap: 18px;
+    padding: 6px 24px 30px;
+  }
+  .social-icons svg { width: 26px; height: 26px; }
+
+  /* ============ MAILING LIST FORM ============ */
+  .signup-form {
+    padding: 10px 24px 30px;
+    max-width: 500px;
+  }
+  .signup-form input {
+    display: block;
+    width: 100%;
+    padding: 18px 16px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    font-family: inherit;
+    background: #fff;
+  }
+  .signup-form input::placeholder { color: #999; }
+  .signup-btn {
+    border: 1px solid #111;
+    background: #fff;
+    padding: 18px 34px;
+    font-size: 17px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .signup-btn:hover { background: #111; color: #fff; }
+
+  /* ============ FOOTER ============ */
+  footer.site-footer {
+    padding: 20px 24px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .footer-social {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 30px;
+  }
+  .footer-social svg { width: 24px; height: 24px; }
+  .footer-copy {
+    text-align: right;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (min-width: 700px) {
+    .about-hero-text { font-size: 46px; padding: 20px 40px 40px; }
+    .about-body, .about-links, .mailing-blurb, .cv-body, .contact-address, .contact-links, .signup-form { padding-left: 40px; padding-right: 40px; }
+    .page-title { font-size: 38px; }
+    .contact-title { padding-left: 40px; padding-right: 40px; }
+    .social-icons { padding-left: 40px; padding-right: 40px; }
+    header.site-header { padding: 26px 40px; }
+    footer.site-footer { padding: 30px 40px 50px; }
+  }
+
+  @media (min-width: 1000px) {
+    .page { max-width: 1000px; }
+    .about-hero-text { font-size: 54px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="header-title">Ade Adesina</div>
+  <div class="cart">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.6"><path d="M4 4h2l2.2 11.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 8H7"/><circle cx="9" cy="21" r="1.2"/><circle cx="18" cy="21" r="1.2"/></svg>
+    0
+  </div>
+</header>
+
+<!-- ============ NAV OVERLAY MENU ============ -->
+<nav class="nav-overlay" id="navOverlay">
+  <div class="nav-overlay-header">
+    <button class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">&times;</button>
+    <div class="header-title" style="flex:1; text-align:center;">Ade Adesina</div>
+    <div class="cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.6"><path d="M4 4h2l2.2 11.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 8H7"/><circle cx="9" cy="21" r="1.2"/><circle cx="18" cy="21" r="1.2"/></svg>
+      0
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#about" class="nav-link">About</a>
+    <a href="#works" class="nav-link">Works</a>
+    <a href="#collaborative" class="nav-link">Collaborative Works</a>
+    <a href="#sculpture" class="nav-link">Sculpture</a>
+    <a href="#exhibitions" class="nav-link">Exhibitions &amp; Events</a>
+    <a href="#cv" class="nav-link">CV</a>
+    <a href="#shop" class="nav-link">Shop</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ============ ABOUT PAGE ============ -->
+  <section id="about" class="page active">
+    <div class="full-bleed-img">
+      <img src="images/about-bio-image.jpg" alt="Ade Adesina artwork">
+    </div>
+    <h1 class="about-hero-text">printmaker, painter, and sculptor. The artist combines cultures, producing work that makes people reflect on the past, present, and future.</h1>
+    <div class="about-body">
+      <p><b>Ade Adesina</b> is an artist living and working in Aberdeen, Scotland. Having previously studied printmaking at Gray&rsquo;s School of Art, Robert Gordon University, Aberdeen, he graduated in 2012. Adesina is a Royal Scottish Academician a member of The Royal Society of Painters and Printmakers, and a member of The London Group. He has had artist residencies at Eton College, Glasgow Print Studio, Gray&rsquo;s School of Art, Aberdeen, Engramme, Quebec, Canada, and Fossekleiva Kultursenter Berger Museum, Norway 2024. More recently, he was awarded the Mario Avati Engraving Prize 2023 from the Academie des Beaux-Arts, France.</p>
+      <p>Currently Entrepreneur in Residence, Aberdeen University and Freelands Studio Fellowship, University of Dundee.</p>
+    </div>
+    <div class="about-links">
+      <a href="#contact">email</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener">instagram</a>
+    </div>
+    <div class="mailing-blurb">Sign up to the mailing list to receive news of new prints, exhibitions and events.</div>
+  </section>
+
+  <!-- ============ WORKS PAGE ============ -->
+  <section id="works" class="page">
+    <h1 class="page-title">Works</h1>
+    <div class="works-list">
+      <img src="images/works-1.jpg" alt="Works - city and baobab landscape print">
+      <img src="images/works-2.jpg" alt="Works - baobab tree with clock print">
+    </div>
+  </section>
+
+  <!-- ============ COLLABORATIVE WORKS PAGE ============ -->
+  <section id="collaborative" class="page">
+    <h1 class="page-title">Collaborative Works</h1>
+    <div class="works-list">
+      <img src="images/portrait-ade-1.jpg" alt="Ade Adesina portrait with prints">
+    </div>
+  </section>
+
+  <!-- ============ SCULPTURE PAGE ============ -->
+  <section id="sculpture" class="page">
+    <h1 class="page-title">Sculpture</h1>
+    <div class="works-list">
+      <img src="images/sculpture-install.jpg" alt="Sculpture installation - clock and door">
+      <img src="images/artwork-solo-figure.jpg" alt="Ladder sculpture installation">
+    </div>
+  </section>
+
+  <!-- ============ EXHIBITIONS & EVENTS PAGE ============ -->
+  <section id="exhibitions" class="page">
+    <h1 class="page-title">Exhibitions &amp; Events</h1>
+    <div class="exhibitions-list">
+      <img src="images/gallery-install-2.jpg" alt="Gallery installation, dark blue wall">
+      <img src="images/artwork-solo-figure.jpg" alt="Ladder sculpture on floor installation">
+      <img src="images/portrait-ade-1.jpg" alt="Ade Adesina portrait in front of prints">
+    </div>
+    <div class="mailing-blurb">Sign up to the mailing list to receive news of new prints, exhibitions and events.</div>
+  </section>
+
+  <!-- ============ CV PAGE ============ -->
+  <section id="cv" class="page">
+    <div class="full-bleed-img">
+      <img src="images/sculpture-install.jpg" alt="Sculpture installation with chair, clock and door">
+    </div>
+    <h1 class="page-title" style="text-align:left;">Printmaker &amp; Sculptor</h1>
+    <div class="cv-body">
+      <p><b>Ade Adesina</b> is an artist living and working in Aberdeen, Scotland. Having previously studied printmaking at Gray&rsquo;s School of Art, Robert Gordon University, Aberdeen, he graduated in 2012. Adesina is a Royal Scottish Academician an Associate member of The Royal Society of Painters and Printmakers, and a member of The London Group. He has had artist residencies at Eton College, Glasgow Print Studio, Gray&rsquo;s School of Art, Aberdeen, Engramme, Quebec, Canada, and Fossekleiva Kultursenter Berger Museum, Norway 2024. More recently, he was awarded the Mario Avati Engraving Prize 2023 from the Academie des Beaux-Arts, France.</p>
+    </div>
+
+    <div style="padding: 30px 24px 0;">
+      <h2 style="font-size:26px; font-weight:700;">Selected Exhibitions &amp; Awards</h2>
+    </div>
+
+    <figure class="captioned" style="margin-top: 20px;">
+      <img src="images/hero-gallery-1.jpg" alt="John Martin Gallery install shot">
+      <figcaption>John Martin Gallery, 2017</figcaption>
+    </figure>
+
+    <div class="accordion" id="cvAccordion">
+      <div class="accordion-item">
+        <button class="accordion-header">2024 <span class="plus">+</span></button>
+        <div class="accordion-panel">
+          <ul>
+            <li>Fossekleiva Kultursenter Berger Museum, Norway &ndash; Residency</li>
+            <li>Entrepreneur in Residence, Aberdeen University</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">2023 <span class="plus">+</span></button>
+        <div class="accordion-panel">
+          <ul>
+            <li>Mario Avati Engraving Prize, Academie des Beaux-Arts, France</li>
+          </ul>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">2022 <span class="plus">+</span></button>
+        <div class="accordion-panel">
+          <ul>
+            <li>Selected group exhibitions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-links" style="margin-top:20px;">
+      <a href="#contact">email</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener">instagram</a>
+    </div>
+    <div class="mailing-blurb">Sign up to the mailing list to receive news of new prints, exhibitions and events.</div>
+  </section>
+
+  <!-- ============ SHOP PAGE ============ -->
+  <section id="shop" class="page">
+    <h1 class="page-title">Shop</h1>
+    <p style="padding:0 24px 30px; font-size:17px;">Prints available soon.</p>
+  </section>
+
+  <!-- ============ CONTACT PAGE ============ -->
+  <section id="contact" class="page">
+    <div class="full-bleed-img">
+      <img src="images/contact-portrait.jpg" alt="Ade Adesina portrait with cowrie shell prints">
+    </div>
+    <h1 class="contact-title">Contact</h1>
+    <div class="contact-address">
+      Wasps Artist Studio<br>
+      36- 48 Langstane Place<br>
+      Aberdeen, Scotland<br>
+      AB11 6EL
+    </div>
+    <div class="contact-links">
+      <a href="mailto:info@adeadesina.com">email</a>
+    </div>
+    <div class="social-icons">
+      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      </a>
+      <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.6"><path d="M15 8h-2a2 2 0 0 0-2 2v2H9v3h2v7h3v-7h2.2l.5-3H14v-1.5c0-.4.3-.8.8-.8H15V8z"/></svg>
+      </a>
+    </div>
+    <div class="mailing-blurb">Sign up to the mailing list to receive news of new prints, exhibitions and events.</div>
+    <form class="signup-form" id="signupForm">
+      <input type="text" placeholder="First Name" required>
+      <input type="text" placeholder="Last Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <button type="submit" class="signup-btn">Sign Up</button>
+    </form>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="footer-social">
+    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+    </a>
+    <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.6"><path d="M15 8h-2a2 2 0 0 0-2 2v2H9v3h2v7h3v-7h2.2l.5-3H14v-1.5c0-.4.3-.8.8-.8H15V8z"/></svg>
+    </a>
+  </div>
+  <div class="footer-copy">
+    &copy;2026 All rights reserved:<br>
+    Ade Adesina<br>
+    website built by:<br>
+    TRY Industries
+  </div>
+</footer>
+
+<!-- ============ SCRIPT ============ -->
+<script>
+  // Hamburger menu open/close
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const navCloseBtn = document.getElementById('navCloseBtn');
+  const navOverlay = document.getElementById('navOverlay');
+
+  function openNav() { navOverlay.classList.add('open'); }
+  function closeNav() { navOverlay.classList.remove('open'); }
+
+  hamburgerBtn.addEventListener('click', openNav);
+  navCloseBtn.addEventListener('click', closeNav);
+
+  // Nav link clicks -> close menu + switch page
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      showPage(targetId);
+      closeNav();
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+  });
+
+  // Generic hash links elsewhere on the page (e.g. "email" -> #contact)
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    if (link.classList.contains('nav-link')) return;
+    link.addEventListener('click', (e) => {
+      const targetId = link.getAttribute('href').substring(1);
+      const target = document.getElementById(targetId);
+      if (target && target.classList.contains('page')) {
+        e.preventDefault();
+        showPage(targetId);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+    });
+  });
+
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const page = document.getElementById(id);
+    if (page) page.classList.add('active');
+    history.replaceState(null, '', '#' + id);
+  }
+
+  // On load, respect hash if present
+  window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.substring(1);
+    if (hash && document.getElementById(hash) && document.getElementById(hash).classList.contains('page')) {
+      showPage(hash);
+    }
+  });
+
+  // Accordion (CV page - Selected Exhibitions & Awards)
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.parentElement;
+      item.classList.toggle('open');
+    });
+  });
+
+  // Mailing list form (front-end only, no backend)
+  const signupForm = document.getElementById('signupForm');
+  if (signupForm) {
+    signupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you for signing up!');
+      signupForm.reset();
+    });
+  }
+</script>
+
+</body>
+</html>
