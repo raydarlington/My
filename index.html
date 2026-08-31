@@ -1379,6 +1379,102 @@ body:has(#about.is-active) #menuButton{
 }
 </style>
 
+
+<style id="about-final-fix">
+/* ABOUT PAGE: white background, black text */
+#about,
+#about.about-reference-page,
+.about-reference-page,
+.about-reference-inner {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* About page's own menu button: exactly three black dashes */
+.about-menu-proxy {
+  appearance: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  width: 46px !important;
+  height: 42px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  gap: 6px !important;
+  cursor: pointer !important;
+}
+.about-menu-proxy span {
+  display: block !important;
+  width: 34px !important;
+  height: 2px !important;
+  min-height: 2px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #000000 !important;
+  border: 0 !important;
+  opacity: 1 !important;
+}
+
+/* Global menu button, if shown anywhere on white pages */
+#menuButton,
+.menu-button {
+  background: transparent !important;
+  color: #000000 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+#menuButton .menu-lines,
+.menu-button .menu-lines {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  width: 34px !important;
+}
+#menuButton .menu-lines span,
+.menu-button .menu-lines span {
+  display: block !important;
+  width: 34px !important;
+  height: 2px !important;
+  background: #000000 !important;
+  border: 0 !important;
+}
+
+/* Opened menu: white background, black text */
+#siteMenu,
+.menu-overlay,
+.menu-panel {
+  background: #ffffff !important;
+  color: #000000 !important;
+}
+#siteMenu a,
+#siteMenu button,
+.menu-overlay a,
+.menu-panel a,
+.menu-close {
+  color: #000000 !important;
+}
+
+/* Portrait image area */
+.about-portrait {
+  width: 100% !important;
+  margin: 24px 0 62px !important;
+}
+.about-portrait img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+  background: #f3f3f3 !important;
+}
+
+@media (max-width: 700px) {
+  .about-portrait { margin: 18px 0 48px !important; }
+}
+</style>
+
 </head>
 <body>
 
@@ -1432,7 +1528,12 @@ body:has(#about.is-active) #menuButton{
     </div>
 
     <figure class="about-portrait">
-      <img src="images/DSC09968.jpeg" alt="Portrait of Darlington Raymond" loading="eager">
+      <img
+        src="images/DSC09968.jpeg"
+        alt="Portrait of Darlington Raymond"
+        loading="eager"
+        onerror="if(!this.dataset.fallback){this.dataset.fallback='1';this.src='images/images/DSC09968.jpeg';}"
+      >
     </figure>
 
     <p class="about-lead">
