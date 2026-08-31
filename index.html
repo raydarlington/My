@@ -1475,6 +1475,50 @@ body:has(#about.is-active) #menuButton{
 }
 </style>
 
+
+<style id="home-hamburger-final">
+/* HOME PAGE — same three black dashes as About */
+body:not(:has(#about.is-active)) #menuButton,
+body:not(:has(#about.is-active)) .menu-button {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: #000 !important;
+}
+
+body:not(:has(#about.is-active)) #menuButton .menu-lines,
+body:not(:has(#about.is-active)) .menu-button .menu-lines {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  gap: 6px !important;
+  width: 34px !important;
+  height: 42px !important;
+}
+
+body:not(:has(#about.is-active)) #menuButton .menu-lines span,
+body:not(:has(#about.is-active)) .menu-button .menu-lines span {
+  display: block !important;
+  width: 34px !important;
+  height: 2px !important;
+  min-height: 2px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #000000 !important;
+  border: 0 !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Keep the homepage subtitle exactly as requested */
+.hero-subtitle,
+.home-subtitle,
+.artist-role {
+  font-weight: 400;
+}
+</style>
+
 </head>
 <body>
 
@@ -1511,7 +1555,7 @@ body:has(#about.is-active) #menuButton{
 <section class="hero" id="top">
   <div class="hero-content">
     <h1>DARLINGTON<br>RAYMOND</h1>
-    <p class="hero-location">ARTIST</p>
+    <p class="hero-location">Visual Artist</p>
   </div>
   <span class="hero-scroll" aria-hidden="true">Scroll to explore</span>
 </section>
