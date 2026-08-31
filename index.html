@@ -261,8 +261,59 @@
   }
 
 
+
+  /* ---------- EXHIBITION ARCHIVE ---------- */
+  .exhibition-archive{
+    display:grid;
+    gap:84px;
+  }
+  .year-group{
+    padding:0;
+    border-bottom:none;
+  }
+  .year-heading{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:28px;
+    align-items:baseline;
+    padding-bottom:22px;
+    border-bottom:1px solid var(--line);
+    margin-bottom:42px;
+  }
+  .year-heading h3{
+    font-family:'Fraunces', serif;
+    font-size:clamp(2.4rem, 5vw, 4rem);
+    color:var(--ochre);
+    line-height:1;
+  }
+  .year-heading p{
+    color:var(--ink-dim);
+    max-width:52ch;
+  }
+  .year-exhibitions{
+    display:grid;
+    gap:72px;
+  }
+  .year-exhibitions .exhibition-feature{
+    margin-top:0;
+    padding-top:0;
+    border-top:none;
+  }
+  .exhibition-placeholder{
+    border-top:1px solid var(--line);
+    padding-top:34px;
+  }
+  .exhibition-placeholder h3{
+    font-size:1.35rem;
+    margin:6px 0 10px;
+  }
+  .exhibition-placeholder p:last-child{
+    color:var(--ink-dim);
+    max-width:58ch;
+  }
+
   /* ---------- REFLECTION 2026 (within Exhibitions) ---------- */
-  .exhibition-feature{ margin-top:88px; padding-top:64px; border-top:1px solid var(--line); }
+  .exhibition-feature{ margin-top:0; padding-top:0; border-top:none; }
   .reflection-hero{
     display:grid;
     grid-template-columns:minmax(0, 0.9fr) minmax(0, 1.1fr);
@@ -422,6 +473,7 @@
     .gwork .meta{ opacity:1; transform:none; background:linear-gradient(180deg, rgba(14,11,9,0) 30%, rgba(14,11,9,0.9) 100%); }
     .trow{ grid-template-columns:1fr; gap:6px; }
     .trow .tag{ text-align:left; }
+    .year-heading{ grid-template-columns:1fr; gap:10px; }
     .reflection-gallery{ grid-template-columns:repeat(2,1fr); }
     .r-wide,.r-tall,.r-half,.r-third,.r-poster,.r-art{ grid-column:span 1; aspect-ratio:4/5; }
     .reflection-gallery figcaption{ opacity:1; }
@@ -568,47 +620,22 @@
       </div>
     </div>
 
-    <div class="timeline">
-      <div class="trow">
-        <div class="year">2026</div>
-        <div class="what">
-          <h3>Exhibition or event title</h3>
-          <p>Venue or organiser, city.</p>
+    
+    <div class="exhibition-archive">
+      <section class="year-group" aria-labelledby="year-2026">
+        <div class="year-heading">
+          <h3 id="year-2026">2026</h3>
+          <p>Selected exhibitions from 2026.</p>
         </div>
-        <div class="tag">Exhibited</div>
-      </div>
-      <div class="trow">
-        <div class="year">2025</div>
-        <div class="what">
-          <h3>Exhibition or event title</h3>
-          <p>Venue or organiser, city.</p>
-        </div>
-        <div class="tag">Award</div>
-      </div>
-      <div class="trow">
-        <div class="year">2024</div>
-        <div class="what">
-          <h3>Exhibition or event title</h3>
-          <p>Venue or organiser, city.</p>
-        </div>
-        <div class="tag">Press</div>
-      </div>
-      <div class="trow">
-        <div class="year">2023</div>
-        <div class="what">
-          <h3>Exhibition or event title</h3>
-          <p>Venue or organiser, city.</p>
-        </div>
-        <div class="tag">Selected</div>
-      </div>
-    </div>
 
+        <div class="year-exhibitions">
+          
 <div id="reflection" class="exhibition-feature">
   <div class="wrap">
     <div class="section-head">
       <div>
-        <p class="section-num">2026 — Exhibition focus</p>
-        <h2>Reflection, 2026</h2>
+        <p class="section-num">Exhibition 01</p>
+        <h2>Reflection</h2>
       </div>
     </div>
 
@@ -680,6 +707,39 @@
     </div>
   </div>
 </div>
+
+
+          <article class="exhibition-placeholder">
+            <div>
+              <p class="section-num">Exhibition 02</p>
+              <h3>Add another 2026 exhibition</h3>
+              <p>Use this space for the next 2026 exhibition title, venue, dates and images.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="year-group" aria-labelledby="year-2025">
+        <div class="year-heading">
+          <h3 id="year-2025">2025</h3>
+          <p>Earlier exhibitions can be added here.</p>
+        </div>
+      </section>
+
+      <section class="year-group" aria-labelledby="year-2024">
+        <div class="year-heading">
+          <h3 id="year-2024">2024</h3>
+          <p>Earlier exhibitions can be added here.</p>
+        </div>
+      </section>
+
+      <section class="year-group" aria-labelledby="year-2023">
+        <div class="year-heading">
+          <h3 id="year-2023">2023</h3>
+          <p>Earlier exhibitions can be added here.</p>
+        </div>
+      </section>
+    </div>
   </div>
 </section>
 
