@@ -1623,17 +1623,60 @@ body #menuButton .menu-lines span {
 }
 </style>
 
+
+<style id="home-menu-three-real-lines">
+#menuButton{
+  -webkit-appearance:none !important;
+  appearance:none !important;
+  position:absolute;
+  background:transparent !important;
+  background-color:transparent !important;
+  border:0 !important;
+  outline:0 !important;
+  box-shadow:none !important;
+  padding:0 !important;
+  width:46px !important;
+  height:42px !important;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  align-items:flex-start !important;
+  gap:6px !important;
+  cursor:pointer !important;
+}
+#menuButton .home-dash{
+  position:static !important;
+  display:block !important;
+  flex:0 0 2px !important;
+  width:34px !important;
+  height:2px !important;
+  min-height:2px !important;
+  max-height:2px !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:#000000 !important;
+  background-color:#000000 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  opacity:1 !important;
+  transform:none !important;
+}
+/* Remove any old pseudo-element menu graphics */
+#menuButton::before,
+#menuButton::after{
+  content:none !important;
+  display:none !important;
+}
+</style>
+
 </head>
 <body>
 
 <header>
   <div class="home-nav">
     <a href="#top" class="home-brand" aria-label="Home">DARLINGTON RAYMOND</a>
-    <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu">
-      <span class="menu-lines" aria-hidden="true">
-        <span></span><span></span><span></span>
-      </span>
-    </button>
+    <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu"><span class="home-dash"></span><span class="home-dash"></span><span class="home-dash"></span></button>
   </div>
 </header>
 
