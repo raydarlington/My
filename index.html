@@ -1670,13 +1670,59 @@ body #menuButton .menu-lines span {
 }
 </style>
 
+
+<style id="home-menu-svg-three-lines">
+/* HOME MENU: exactly three black lines — no box */
+#menuButton{
+  -webkit-appearance:none !important;
+  appearance:none !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  background-color:transparent !important;
+  box-shadow:none !important;
+  outline:0 !important;
+  min-width:0 !important;
+  width:46px !important;
+  height:42px !important;
+  padding:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:visible !important;
+}
+#menuButton::before,
+#menuButton::after{
+  content:none !important;
+  display:none !important;
+}
+#menuButton .home-menu-icon{
+  display:block !important;
+  width:34px !important;
+  height:22px !important;
+  overflow:visible !important;
+  flex:none !important;
+}
+#menuButton .home-menu-icon line{
+  stroke:#000000 !important;
+  stroke-width:2 !important;
+  stroke-linecap:butt !important;
+  vector-effect:non-scaling-stroke !important;
+  opacity:1 !important;
+}
+</style>
+
 </head>
 <body>
 
 <header>
   <div class="home-nav">
     <a href="#top" class="home-brand" aria-label="Home">DARLINGTON RAYMOND</a>
-    <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu"><span class="home-dash"></span><span class="home-dash"></span><span class="home-dash"></span></button>
+    <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu"><svg class="home-menu-icon" viewBox="0 0 34 22" width="34" height="22" aria-hidden="true" focusable="false">
+      <line x1="0" y1="1" x2="34" y2="1"></line>
+      <line x1="0" y1="11" x2="34" y2="11"></line>
+      <line x1="0" y1="21" x2="34" y2="21"></line>
+    </svg></button>
   </div>
 </header>
 
