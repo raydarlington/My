@@ -1188,6 +1188,197 @@ color:#000!important}
 .menu-overlay a,.menu-panel a,.mobile-menu a,.navigation-overlay a,.menu-drawer a,.nav-panel a,.menu-overlay button,.menu-panel button{color:#000!important}
 .menu-overlay .close,.menu-panel .close,.mobile-menu .close,.navigation-overlay .close{color:#000!important}
 </style>
+
+<style id="about-reference-styles">
+/* About page inspired by the supplied reference */
+#about.about-reference-page{
+  background:#fff !important;
+  color:#000 !important;
+  min-height:100svh;
+  padding:0 !important;
+  border:0 !important;
+  font-family:Arial, Helvetica, sans-serif !important;
+}
+
+.about-reference-inner{
+  width:min(100%, 920px);
+  margin:0 auto;
+  padding:28px 42px 70px;
+}
+
+.about-reference-topbar{
+  min-height:118px;
+  display:grid;
+  grid-template-columns:80px 1fr 80px;
+  align-items:center;
+  gap:10px;
+}
+
+.about-name{
+  text-align:center;
+  font-size:1.1rem;
+  font-weight:500;
+  letter-spacing:-.02em;
+  color:#000;
+}
+
+.about-menu-proxy{
+  width:48px;
+  height:44px;
+  padding:0;
+  border:0;
+  background:transparent;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:6px;
+  cursor:pointer;
+}
+
+.about-menu-proxy span{
+  display:block;
+  width:34px;
+  height:2px;
+  background:#000;
+}
+
+.about-top-spacer{ width:48px; height:44px; }
+
+.about-portrait-placeholder{
+  width:100%;
+  aspect-ratio:4/5;
+  background:#f3f3f3;
+  border:1px solid #e2e2e2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#777;
+  font-size:.8rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin:24px 0 62px;
+}
+
+.about-lead{
+  margin:0 0 52px;
+  max-width:17ch;
+  font-size:clamp(2.25rem, 6vw, 4.5rem);
+  line-height:1.08;
+  letter-spacing:-.045em;
+  font-weight:400 !important;
+  color:#000 !important;
+}
+
+.about-body-copy{
+  max-width:760px;
+}
+
+.about-body-copy p{
+  color:#000 !important;
+  font-size:clamp(1rem, 2.2vw, 1.34rem) !important;
+  line-height:1.45;
+  margin:0 0 24px;
+  font-weight:400 !important;
+}
+
+.about-body-copy strong{
+  font-weight:700;
+}
+
+.about-divider{
+  height:1px;
+  background:#000;
+  margin:68px 0 54px;
+}
+
+.about-links{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:3px;
+}
+
+.about-links a{
+  color:#000 !important;
+  font-size:clamp(1.15rem, 3vw, 1.55rem);
+  line-height:1.1;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+
+/* Keep the main hamburger black whenever About is open */
+body:has(#about.is-active) #menuButton .menu-lines span{
+  background:#000 !important;
+}
+body:has(#about.is-active) #menuButton{
+  color:#000 !important;
+}
+
+/* Keep the About-page hamburger as three black lines */
+body:has(#about.is-active) #menuButton{
+  opacity:0 !important;
+  pointer-events:none !important;
+}
+
+/* Menu overlay remains clean white with black categories */
+.menu-overlay,
+.menu-panel{
+  background:#fff !important;
+  color:#000 !important;
+}
+.menu-panel nav a,
+.menu-close{
+  color:#000 !important;
+}
+
+@media(max-width:700px){
+  .about-reference-inner{
+    padding:18px 26px 52px;
+  }
+  .about-reference-topbar{
+    min-height:104px;
+    grid-template-columns:60px 1fr 60px;
+  }
+  .about-name{
+    font-size:1rem;
+  }
+  .about-portrait-placeholder{
+    margin:18px 0 48px;
+  }
+  .about-lead{
+    font-size:clamp(2.05rem, 9vw, 3rem);
+    max-width:none;
+    margin-bottom:44px;
+  }
+  .about-body-copy p{
+    font-size:1.05rem !important;
+  }
+  .about-divider{
+    margin:54px 0 42px;
+  }
+}
+</style>
+
+
+<style id="about-portrait-image-style">
+.about-portrait{
+  width:100%;
+  margin:24px 0 62px;
+}
+.about-portrait img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:cover;
+}
+@media(max-width:700px){
+  .about-portrait{
+    margin:18px 0 48px;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -1229,36 +1420,58 @@ color:#000!important}
   <span class="hero-scroll" aria-hidden="true">Scroll to explore</span>
 </section>
 
-<section id="about">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <p class="section-num">01 — About</p>
-        <h2>Biography &amp; statement</h2>
-      </div>
-    </div>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>[Biography paragraph one — where you're based, what you make, and the throughline of your practice. Two to four sentences works well here.]</p>
-        <p>[Biography paragraph two — background, training, influences, or how your practice developed. Keep it concrete and specific rather than generic.]</p>
+<section id="about" class="about-reference-page">
+  <div class="about-reference-inner">
 
-        <div class="statement">
-          <p>"[Your artist statement goes here — a short, first-person paragraph about what your work explores and why it matters to you.]"</p>
-          <cite>— Artist statement</cite>
-        </div>
-
-        <div class="skills-list">
-          <span>Medium one</span>
-          <span>Medium two</span>
-          <span>Medium three</span>
-          <span>Medium four</span>
-        </div>
-      </div>
-      <div class="about-photo">
-        <div class="placeholder-photo"><span>Portrait photo of the artist</span></div>
-        <p class="cap">[Photo caption]</p>
-      </div>
+    <div class="about-reference-topbar">
+      <button class="about-menu-proxy" type="button" aria-label="Open menu" onclick="document.getElementById('menuButton').click()">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="about-name">Darlington Raymond</div>
+      <div class="about-top-spacer" aria-hidden="true"></div>
     </div>
+
+    <figure class="about-portrait">
+      <img src="images/DSC09968.jpeg" alt="Portrait of Darlington Raymond" loading="eager">
+    </figure>
+
+    <p class="about-lead">
+      Darlington Raymond is a Nigerian visual artist whose figurative practice explores
+      culture, migration and human emotion. Through portraiture, gesture and expression,
+      he reflects on identity, memory and the experiences people carry from one place to another.
+    </p>
+
+    <div class="about-body-copy">
+      <p>
+        <strong>Darlington Tochukwu Raymond</strong> works across acrylic, oil, pastel,
+        charcoal, graphite and mixed media. His paintings are rooted in people and lived
+        experience, using the human figure to explore vulnerability, resilience, cultural
+        identity and contemporary African life.
+      </p>
+
+      <p>
+        His recent exhibition activity includes <em>Fragments of Her</em> at Espacio Gallery
+        in London, <em>Reflection</em> at One Art Gallery in Lagos, the Accord Hospice
+        Exhibition in Paisley, Bradford Artfestival, the Big Art Show and the Life in My City
+        Art Festival regional exhibition. In 2026, he was nominated for Creative of the Year
+        at the Black Scottish Awards, with his work also receiving press coverage from
+        THISDAY LIVE and the Paisley Daily Express.
+      </p>
+
+      <p>
+        Darlington holds a B.Tech in Estate Management and an MSc in Project Management.
+        He is currently a member of
+        <strong>Visual Arts Scotland</strong> and the <strong>Aberdeen Artists Society</strong>.
+      </p>
+    </div>
+
+    <div class="about-divider"></div>
+
+    <div class="about-links">
+      <a href="mailto:raydarlington21@gmail.com">email</a>
+      <a href="https://www.instagram.com/Ray__darlington" target="_blank" rel="noopener">instagram</a>
+    </div>
+
   </div>
 </section>
 
