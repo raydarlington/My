@@ -1519,6 +1519,23 @@ body:not(:has(#about.is-active)) .menu-button .menu-lines span {
 }
 </style>
 
+
+<style id="about-lead-smaller">
+#about .about-lead{
+  font-size: clamp(1.55rem, 3.4vw, 2.65rem) !important;
+  line-height: 1.18 !important;
+  font-weight: 300 !important;
+  letter-spacing: -0.025em !important;
+  max-width: 24ch !important;
+}
+@media (max-width:700px){
+  #about .about-lead{
+    font-size: clamp(1.45rem, 6vw, 2rem) !important;
+    line-height: 1.2 !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
