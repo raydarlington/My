@@ -1536,6 +1536,42 @@ body:not(:has(#about.is-active)) .menu-button .menu-lines span {
 }
 </style>
 
+
+<style id="home-three-black-dashes-absolute">
+/* HOME / FRONT PAGE MENU BUTTON */
+body #menuButton,
+body .menu-button {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+/* If the existing button uses spans directly */
+body #menuButton > span,
+body .menu-button > span,
+body #menuButton .menu-lines > span,
+body .menu-button .menu-lines > span {
+  display: block !important;
+  width: 34px !important;
+  height: 2px !important;
+  min-height: 2px !important;
+  background: #000000 !important;
+  border: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Container spacing for the three dashes */
+body #menuButton .menu-lines,
+body .menu-button .menu-lines {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+  width: 34px !important;
+}
+</style>
+
 </head>
 <body>
 
