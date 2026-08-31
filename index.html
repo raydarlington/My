@@ -42,77 +42,193 @@
 
   .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
 
-  /* ---------- NAV ---------- */
+  /* ---------- MINIMAL HOME + MENU ---------- */
   header{
-    position:fixed; top:0; left:0; right:0; z-index:100;
-    background:rgba(22,18,16,0.86);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
+    position:fixed;
+    inset:0 0 auto 0;
+    z-index:200;
+    pointer-events:none;
   }
-  .navwrap{
-    max-width:var(--maxw); margin:0 auto; padding:0 32px;
-    display:flex; align-items:center; justify-content:space-between;
-    height:68px;
+
+  .home-nav{
+    width:100%;
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    padding:32px 38px;
   }
-  .brand{
-    font-family:'Fraunces', serif;
-    font-size:1.02rem;
+
+  .home-brand{
+    font-family:'Work Sans', sans-serif;
+    font-size:clamp(1.15rem, 2.4vw, 1.7rem);
+    font-weight:600;
+    letter-spacing:-0.03em;
+    text-transform:uppercase;
+    color:#fff;
+    line-height:.95;
+    max-width:12ch;
+    pointer-events:auto;
+  }
+
+  .menu-button{
+    pointer-events:auto;
+    appearance:none;
+    border:1px solid rgba(255,255,255,.34);
+    background:rgba(0,0,0,.16);
+    color:#fff;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    transition:background .2s ease, color .2s ease, transform .2s ease;
+  }
+  .menu-button:hover,
+  .menu-button:focus-visible{
+    background:#fff;
+    color:#000;
+    transform:scale(1.04);
+  }
+  .menu-button:focus-visible{
+    outline:2px solid #fff;
+    outline-offset:4px;
+  }
+
+  .menu-lines{
+    width:23px;
+    display:grid;
+    gap:6px;
+  }
+  .menu-lines span{
+    display:block;
+    height:2px;
+    width:100%;
+    background:currentColor;
+  }
+
+  .menu-overlay{
+    position:fixed;
+    inset:0;
+    z-index:300;
+    background:#000;
+    display:grid;
+    place-items:center;
+    padding:34px;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .25s ease, visibility .25s ease;
+  }
+  .menu-overlay.is-open{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+
+  .menu-panel{
+    position:relative;
+    width:min(620px, 84vw);
+    min-height:min(720px, 74vh);
+    background:#f4f2ec;
+    color:#060606;
+    padding:clamp(72px, 10vw, 110px) clamp(42px, 7vw, 84px);
+    transform:scale(.98);
+    transition:transform .28s ease;
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
+  }
+  .menu-overlay.is-open .menu-panel{
+    transform:scale(1);
+  }
+
+  .menu-close{
+    position:absolute;
+    top:24px;
+    right:26px;
+    appearance:none;
+    border:0;
+    background:transparent;
+    color:#000;
+    font:inherit;
+    font-size:3.5rem;
+    line-height:1;
+    cursor:pointer;
+
+  }
+
+  .menu-panel nav ul{
+    list-style:none;
+    display:grid;
+    gap:clamp(22px, 4vh, 42px);
+  }
+  .menu-panel nav a{
+    display:inline-block;
+    font-family:'Work Sans', sans-serif;
+    font-size:clamp(2rem, 5vw, 4rem);
     font-weight:500;
-    color:var(--ink);
+    letter-spacing:-0.035em;
+    line-height:1;
+    color:#050505;
+
+    transition:transform .18s ease, opacity .18s ease;
   }
-  .brand span{ color:var(--ochre); }
-  nav ul{ list-style:none; display:flex; gap:34px; }
-  nav a{
-    font-size:0.92rem;
-    color:var(--ink-dim);
-    transition:color .2s ease;
+  .menu-panel nav a:hover,
+  .menu-panel nav a:focus-visible{
+    transform:translateX(8px);
+    opacity:.58;
   }
-  nav a:hover, nav a:focus-visible{ color:var(--ink); }
-  nav a:focus-visible{ outline:1px solid var(--ochre); outline-offset:4px; }
+  .menu-panel nav a:focus-visible{
+    outline:2px solid #000;
+    outline-offset:5px;
+  }
+
+  body.menu-open{ overflow:hidden; }
 
   /* ---------- HERO ---------- */
   .hero{
     position:relative;
-    min-height:100vh;
+    min-height:100svh;
     display:flex;
     align-items:flex-end;
-    background:
-      radial-gradient(ellipse at 70% 30%, #3a2318 0%, #171310 60%),
-      var(--bg);
+    background:#000;
     overflow:hidden;
+    border-bottom:none;
+    padding:0;
   }
-  .hero::before{
-    content:"";
-    position:absolute; inset:0;
-    background:
-      linear-gradient(135deg, rgba(124,42,32,0.35) 0%, transparent 55%),
-      linear-gradient(315deg, rgba(92,102,112,0.28) 0%, transparent 50%);
-  }
+
   .hero-content{
-    position:relative; z-index:2;
-    padding:0 32px 88px;
-    max-width:var(--maxw);
-    margin:0 auto;
     width:100%;
+    max-width:none;
+    margin:0;
+    padding:clamp(34px, 6vw, 74px);
+    padding-bottom:clamp(52px, 8vw, 96px);
   }
-  .hero-eyebrow{
-    color:var(--ochre);
-    font-size:0.95rem;
-    margin-bottom:18px;
-    font-style:italic;
-    font-family:'Fraunces', serif;
-  }
-  .hero h1{
-    font-size:clamp(2.4rem, 6.4vw, 5.2rem);
-    line-height:1.02;
-    max-width:16ch;
-    color:var(--ink);
-  }
+
+  .hero-eyebrow,
   .hero-role{
-    margin-top:22px;
-    font-size:1.05rem;
-    color:var(--ink-dim);
-    max-width:46ch;
+    display:none;
+  }
+
+  .hero h1{
+    font-family:'Work Sans', sans-serif;
+    font-size:clamp(4rem, 14vw, 12rem);
+    font-weight:600;
+    letter-spacing:-0.075em;
+    line-height:.82;
+    text-transform:uppercase;
+    color:#fff;
+    max-width:8ch;
+  }
+
+  .hero-scroll{
+    position:absolute;
+    right:clamp(30px, 5vw, 70px);
+    bottom:clamp(34px, 5vw, 64px);
+    color:rgba(255,255,255,.55);
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    writing-mode:vertical-rl;
   }
 
   /* ---------- SECTION SCAFFOLD ---------- */
@@ -487,6 +603,25 @@
     .brand{ font-size:0.88rem; }
   }
 
+
+  @media (max-width:700px){
+    .home-nav{ padding:24px 22px; }
+    .menu-button{ width:52px; height:52px; }
+    .hero-content{ padding:26px 22px 46px; }
+    .hero h1{ font-size:clamp(3.8rem, 18vw, 6.3rem); max-width:7ch; }
+    .hero-scroll{ display:none; }
+    .menu-overlay{ padding:18px; }
+    .menu-panel{
+      width:86vw;
+      min-height:62vh;
+      padding:78px 38px 54px;
+      transform:scale(.98);
+    }
+    .menu-overlay.is-open .menu-panel{ transform:scale(1); }
+    .menu-panel nav a{ font-size:clamp(2rem, 10vw, 3.4rem); }
+    .menu-close{ font-size:3rem; top:18px; right:20px; }
+  }
+
   @media (prefers-reduced-motion: reduce){
     *{ transition:none !important; scroll-behavior:auto !important; }
   }
@@ -495,26 +630,38 @@
 <body>
 
 <header>
-  <div class="navwrap">
-    <a href="#top" class="brand">Artist <span>Name</span></a>
+  <div class="home-nav">
+    <a href="#top" class="home-brand" aria-label="Home">Artist Name</a>
+    <button class="menu-button" id="menuButton" type="button" aria-label="Open menu" aria-controls="siteMenu" aria-expanded="false">
+      <span class="menu-lines" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+  </div>
+</header>
+
+<div class="menu-overlay" id="siteMenu" aria-hidden="true">
+  <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Site menu">
+    <button class="menu-close" id="menuClose" type="button" aria-label="Close menu">×</button>
     <nav aria-label="Primary">
       <ul>
         <li><a href="#about">About</a></li>
-        <li><a href="#works">Works</a></li>
         <li><a href="#exhibitions">Exhibitions</a></li>
         <li><a href="#commissions">Commissions</a></li>
+        <li><a href="#works">Work</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </div>
-</header>
+</div>
 
 <section class="hero" id="top">
   <div class="hero-content">
-    <p class="hero-eyebrow">Visual artist — City, Country</p>
     <h1>Artist Name</h1>
-    <p class="hero-role">One or two sentences describing your practice — the mediums you work in and the ideas your work explores.</p>
   </div>
+  <span class="hero-scroll" aria-hidden="true">Scroll to explore</span>
 </section>
 
 <section id="about">
@@ -625,16 +772,16 @@
       <section class="year-group" aria-labelledby="year-2026">
         <div class="year-heading">
           <h3 id="year-2026">2026</h3>
-          <p>Selected exhibitions from 2026.</p>
+          <p>Selected exhibitions from 2026, arranged from newest to oldest.</p>
         </div>
 
         <div class="year-exhibitions">
-          
-<div id="reflection" class="exhibition-feature">
+
+          <div id="reflection" class="exhibition-feature">
   <div class="wrap">
     <div class="section-head">
       <div>
-        <p class="section-num">Exhibition 01</p>
+        <p class="section-num">Exhibition 01 · 4–17 July 2026</p>
         <h2>Reflection</h2>
       </div>
     </div>
@@ -676,32 +823,32 @@
 
     <div class="reflection-gallery" aria-label="Reflection exhibition gallery">
       <figure class="r-wide">
-        <img src="images/images/IMG_7262.jpeg" alt="Visitor viewing paintings on an ochre gallery wall during Reflection at One Art Gallery" loading="lazy">
+        <img src="images/IMG_7262.jpeg" alt="Visitor viewing paintings on an ochre gallery wall during Reflection at One Art Gallery" loading="lazy">
         <figcaption>Installation view — Reflection, One Art Gallery, Lagos.</figcaption>
       </figure>
 
       <figure class="r-tall">
-        <img src="images/images/IMG_7263.jpeg" alt="Visitor viewing a monochrome portrait artwork on a dark gallery wall" loading="lazy">
+        <img src="images/IMG_7263.jpeg" alt="Visitor viewing a monochrome portrait artwork on a dark gallery wall" loading="lazy">
         <figcaption>Visitor engagement during the exhibition.</figcaption>
       </figure>
 
       <figure class="r-half">
-        <img src="images/images/IMG_7264.jpeg" alt="Visitor viewing artworks in a bright gallery space during Reflection" loading="lazy">
+        <img src="images/IMG_7264.jpeg" alt="Visitor viewing artworks in a bright gallery space during Reflection" loading="lazy">
         <figcaption>Gallery view from Reflection.</figcaption>
       </figure>
 
       <figure class="r-half">
-        <img src="images/images/IMG_7267.jpeg" alt="Three paintings installed under spotlights on an ochre gallery wall" loading="lazy">
+        <img src="images/IMG_7267.jpeg" alt="Three paintings installed under spotlights on an ochre gallery wall" loading="lazy">
         <figcaption>Installation view of works presented on the ochre wall.</figcaption>
       </figure>
 
       <figure class="r-half">
-        <img src="images/images/IMG_7266.jpeg" alt="Visitor walking past a sequence of colorful framed artworks on a red gallery wall" loading="lazy">
+        <img src="images/IMG_7266.jpeg" alt="Visitor walking past a sequence of colorful framed artworks on a red gallery wall" loading="lazy">
         <figcaption>Exhibition view with works displayed on the red wall.</figcaption>
       </figure>
 
       <figure class="r-half">
-        <img src="images/images/IMG_7261.jpeg" alt="Two visitors discussing a figurative painting at the Reflection exhibition" loading="lazy">
+        <img src="images/IMG_7261.jpeg" alt="Two visitors discussing a figurative painting at the Reflection exhibition" loading="lazy">
         <figcaption>Visitors in conversation with a featured work.</figcaption>
       </figure>
     </div>
@@ -709,13 +856,91 @@
 </div>
 
 
-          <article class="exhibition-placeholder">
-            <div>
-              <p class="section-num">Exhibition 02</p>
-              <h3>Add another 2026 exhibition</h3>
-              <p>Use this space for the next 2026 exhibition title, venue, dates and images.</p>
+          <article id="fragments-of-her" class="exhibition-feature">
+            <div class="reflection-hero">
+              <div class="reflection-copy">
+                <p class="section-num">Exhibition 02 · 12–16 March 2026</p>
+                <p class="eyebrow">Espacio Gallery · London, United Kingdom</p>
+                <h3>Fragments of Her</h3>
+                <p>
+                  A contemporary group exhibition dedicated to female portraiture,
+                  exploring identity, strength, vulnerability and lived experience
+                  through painting, photography, sculpture and mixed media.
+                </p>
+              </div>
+
+              <dl class="reflection-facts">
+                <div class="reflection-fact">
+                  <dt>Exhibition</dt>
+                  <dd>Fragments of Her</dd>
+                </div>
+                <div class="reflection-fact">
+                  <dt>Venue</dt>
+                  <dd>Espacio Gallery, 159 Bethnal Green Road, London E2 7DG</dd>
+                </div>
+                <div class="reflection-fact">
+                  <dt>Dates</dt>
+                  <dd>12–16 March 2026</dd>
+                </div>
+                <div class="reflection-fact">
+                  <dt>Private View</dt>
+                  <dd>12 March 2026, 6–9 pm</dd>
+                </div>
+                <div class="reflection-fact">
+                  <dt>Curator</dt>
+                  <dd>Graciella Harger</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div class="reflection-gallery" aria-label="Fragments of Her exhibition gallery">
+              <figure class="r-tall">
+                <img src="images/C4D595C7-C385-483D-B716-E81DE779E83A.jpeg" alt="Artist portrait at Fragments of Her, Espacio Gallery" loading="lazy">
+                <figcaption>At Espacio Gallery during Fragments of Her.</figcaption>
+              </figure>
+
+              <figure class="r-wide">
+                <img src="images/IMG_7054.jpeg" alt="Visitors viewing works at Fragments of Her" loading="lazy">
+                <figcaption>Visitors engaging with exhibited works.</figcaption>
+              </figure>
+
+              <figure class="r-third">
+                <img src="images/IMG_7039.jpeg" alt="Installation view at Espacio Gallery" loading="lazy">
+                <figcaption>Installation view.</figcaption>
+              </figure>
+
+              <figure class="r-third">
+                <img src="images/IMG_7020.jpeg" alt="Visitor viewing paintings at Espacio Gallery" loading="lazy">
+                <figcaption>Visitor engagement during the exhibition.</figcaption>
+              </figure>
+
+              <figure class="r-third">
+                <img src="images/IMG_7022.jpeg" alt="Opening-night visitors at Fragments of Her" loading="lazy">
+                <figcaption>Opening-night atmosphere.</figcaption>
+              </figure>
+
+              <figure class="r-half">
+                <img src="images/IMG_7026.jpeg" alt="Gallery view showing exhibited paintings" loading="lazy">
+                <figcaption>Gallery view.</figcaption>
+              </figure>
+
+              <figure class="r-half">
+                <img src="images/IMG_6994.jpeg" alt="Visitors gathered in front of exhibited works" loading="lazy">
+                <figcaption>Visitors at Fragments of Her.</figcaption>
+              </figure>
+
+              <figure class="r-half">
+                <img src="images/IMG_6987.jpeg" alt="Visitor photographing an exhibited artwork" loading="lazy">
+                <figcaption>Visitor photographing the exhibition.</figcaption>
+              </figure>
+
+              <figure class="r-half">
+                <img src="images/IMG_6974.jpeg" alt="Wide view of the Fragments of Her opening" loading="lazy">
+                <figcaption>Opening-night gallery view.</figcaption>
+              </figure>
             </div>
           </article>
+
         </div>
       </section>
 
@@ -821,6 +1046,47 @@
     <p>City, Country</p>
   </div>
 </footer>
+
+
+<script>
+  const menuButton = document.getElementById('menuButton');
+  const menu = document.getElementById('siteMenu');
+  const menuClose = document.getElementById('menuClose');
+  const menuLinks = menu.querySelectorAll('a');
+
+  function openMenu(){
+    menu.classList.add('is-open');
+    menu.setAttribute('aria-hidden', 'false');
+    menuButton.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('menu-open');
+    menuClose.focus();
+  }
+
+  function closeMenu(){
+    menu.classList.remove('is-open');
+    menu.setAttribute('aria-hidden', 'true');
+    menuButton.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+    menuButton.focus();
+  }
+
+  menuButton.addEventListener('click', openMenu);
+  menuClose.addEventListener('click', closeMenu);
+  menuLinks.forEach(link => link.addEventListener('click', () => {
+    menu.classList.remove('is-open');
+    menu.setAttribute('aria-hidden', 'true');
+    menuButton.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+  }));
+
+  menu.addEventListener('click', (event) => {
+    if(event.target === menu) closeMenu();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if(event.key === 'Escape' && menu.classList.contains('is-open')) closeMenu();
+  });
+</script>
 
 </body>
 </html>
