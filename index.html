@@ -687,7 +687,7 @@
     inset:0;
     background:
       linear-gradient(180deg,rgba(0,0,0,.36) 0%,rgba(0,0,0,.04) 38%,rgba(0,0,0,.10) 100%),
-      url('images/DSC00003.jpeg') center center / cover no-repeat;
+      url('images/DSC09997.jpeg') center center / cover no-repeat;
   }
   .hero-content{
     position:relative;
@@ -730,7 +730,7 @@
     .hero::before{
       background:
         linear-gradient(180deg,rgba(0,0,0,.42) 0%,rgba(0,0,0,.03) 42%,rgba(0,0,0,.10) 100%),
-        url('images/DSC00003.jpeg') center center / cover no-repeat;
+        url('images/DSC09997.jpeg') center center / cover no-repeat;
     }
   }
 
@@ -782,7 +782,7 @@
     content:"";
     position:absolute;
     inset:0;
-    background:url('images/DSC00003.jpeg') center center / cover no-repeat;
+    background:url('images/DSC09997.jpeg') center center / cover no-repeat;
   }
   .hero-content{
     position:absolute;
@@ -825,7 +825,7 @@
       font-size:1.05rem;
     }
     .hero::before{
-      background:url('images/DSC00003.jpeg') center center / cover no-repeat;
+      background:url('images/DSC09997.jpeg') center center / cover no-repeat;
     }
   }
 
@@ -972,7 +972,7 @@
 
   .hero h1{
     font-size: clamp(2.8rem, 8vw, 6.5rem) !important;
-    font-weight: 300 !important;
+    font-weight: 500 !important;
     letter-spacing: -0.035em !important;
     line-height: .92 !important;
   }
@@ -1012,7 +1012,130 @@
     }
   }
 
+  /* ---------- FINAL HOME TYPOGRAPHY ---------- */
+  .hero-location{
+    margin:12px 0 0;
+    color:#fff;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:clamp(.68rem, 1.4vw, .86rem);
+    font-weight:400 !important;
+    letter-spacing:.18em;
+    line-height:1.2;
+  }
+  @media(max-width:700px){
+    .hero-location{ margin-top:9px; font-size:.68rem; }
+  }
+
 </style>
+
+<style>
+/* ===== EXACT HOME PAGE LAYOUT UPDATE ===== */
+body { background:#000; }
+
+.hero{
+  width:calc(100% - 32px) !important;
+  height:calc(100svh - 32px) !important;
+  min-height:0 !important;
+  margin:16px !important;
+  border-radius:42px !important;
+  overflow:hidden !important;
+  background:#000 !important;
+}
+
+.hero::before{
+  background-image:url('images/DSC09997.jpeg') !important;
+  background-position:center center !important;
+  background-size:cover !important;
+  background-repeat:no-repeat !important;
+}
+
+.hero-content{
+  left:42px !important;
+  bottom:38px !important;
+}
+
+.hero h1{
+  font-family:Arial, Helvetica, sans-serif !important;
+  font-size:clamp(1.15rem, 2.1vw, 1.7rem) !important;
+  font-weight:500 !important;
+  letter-spacing:.14em !important;
+  line-height:1.12 !important;
+  max-width:none !important;
+  color:#fff !important;
+  text-shadow:0 1px 12px rgba(0,0,0,.25);
+}
+
+.hero h1 br{ display:none; }
+
+.hero-location{
+  margin-top:8px !important;
+  font-family:Arial, Helvetica, sans-serif !important;
+  font-size:.62rem !important;
+  font-weight:400 !important;
+  letter-spacing:.12em !important;
+  color:rgba(255,255,255,.72) !important;
+}
+
+.menu-button{
+  top:34px !important;
+  right:38px !important;
+  width:44px !important;
+  height:40px !important;
+  background:transparent !important;
+}
+
+.menu-lines,
+.menu-lines span{ width:28px !important; }
+
+.menu-lines span{
+  height:2px !important;
+  background:#fff !important;
+}
+
+@media (max-width:700px){
+  .hero{
+    width:calc(100% - 20px) !important;
+    height:calc(100svh - 20px) !important;
+    margin:10px !important;
+    border-radius:34px !important;
+  }
+
+  .hero::before{
+    background-position:center center !important;
+  }
+
+  .hero-content{
+    left:30px !important;
+    bottom:30px !important;
+  }
+
+  .hero h1{
+    font-size:1rem !important;
+    letter-spacing:.13em !important;
+  }
+
+  .hero-location{
+    font-size:.52rem !important;
+    margin-top:7px !important;
+  }
+
+  .menu-button{
+    top:26px !important;
+    right:27px !important;
+  }
+}
+</style>
+
+
+<style>
+.hero::before {
+  background-image: url('images/DSC09997.jpeg') !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+</style>
+
 </head>
 <body>
 
@@ -1049,6 +1172,7 @@
 <section class="hero" id="top">
   <div class="hero-content">
     <h1>DARLINGTON<br>RAYMOND</h1>
+    <p class="hero-location">UNITED KINGDOM</p>
   </div>
   <span class="hero-scroll" aria-hidden="true">Scroll to explore</span>
 </section>
@@ -1249,7 +1373,7 @@
             <div class="reflection-hero">
               <div class="reflection-copy">
                 <p class="section-num">Exhibition 02 · 12–16 March 2026</p>
-                <p class="eyebrow">Espacio Gallery · London, United Kingdom</p>
+                <p class="eyebrow">Espacio Gallery · United Kingdom</p>
                 <h3>Fragments of Her</h3>
                 <p>
                   A contemporary group exhibition dedicated to female portraiture,
@@ -1451,7 +1575,7 @@
 <footer>
   <div class="wrap">
     <p>© 2026 DARLINGTON RAYMOND</p>
-    <p>City, Country</p>
+    <p>United Kingdom</p>
   </div>
 </footer>
 
