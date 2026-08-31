@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artist Name — Visual Artist</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap');
+
+  :root{
+    --bg:#161210;
+    --bg-raised:#1e1913;
+    --ink:#ece2d2;
+    --ink-dim:#a99d8a;
+    --ink-faint:#7d7364;
+    --red:#7c2a20;
+    --red-bright:#a9412c;
+    --ochre:#c68c50;
+    --line: rgba(236,226,210,0.14);
+    --maxw: 1180px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  h1,h2,h3,.serif{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(22,18,16,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .navwrap{
+    max-width:var(--maxw); margin:0 auto; padding:0 32px;
+    display:flex; align-items:center; justify-content:space-between;
+    height:68px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-size:1.02rem;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .brand span{ color:var(--ochre); }
+  nav ul{ list-style:none; display:flex; gap:34px; }
+  nav a{
+    font-size:0.92rem;
+    color:var(--ink-dim);
+    transition:color .2s ease;
+  }
+  nav a:hover, nav a:focus-visible{ color:var(--ink); }
+  nav a:focus-visible{ outline:1px solid var(--ochre); outline-offset:4px; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    background:
+      radial-gradient(ellipse at 70% 30%, #3a2318 0%, #171310 60%),
+      var(--bg);
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      linear-gradient(135deg, rgba(124,42,32,0.35) 0%, transparent 55%),
+      linear-gradient(315deg, rgba(92,102,112,0.28) 0%, transparent 50%);
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    padding:0 32px 88px;
+    max-width:var(--maxw);
+    margin:0 auto;
+    width:100%;
+  }
+  .hero-eyebrow{
+    color:var(--ochre);
+    font-size:0.95rem;
+    margin-bottom:18px;
+    font-style:italic;
+    font-family:'Fraunces', serif;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 6.4vw, 5.2rem);
+    line-height:1.02;
+    max-width:16ch;
+    color:var(--ink);
+  }
+  .hero-role{
+    margin-top:22px;
+    font-size:1.05rem;
+    color:var(--ink-dim);
+    max-width:46ch;
+  }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{ padding:118px 0; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    gap:40px;
+    margin-bottom:56px;
+  }
+  .section-num{
+    color:var(--ink-faint);
+    font-size:0.85rem;
+    letter-spacing:0.02em;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem, 3.4vw, 2.7rem);
+    margin-top:6px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap:72px;
+    align-items:start;
+  }
+  .about-text p{
+    color:var(--ink-dim);
+    font-size:1.04rem;
+    margin-bottom:22px;
+    max-width:62ch;
+  }
+  .statement{
+    margin-top:38px;
+    padding:30px 0 0;
+    border-top:1px solid var(--line);
+  }
+  .statement p{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.28rem;
+    line-height:1.5;
+    color:var(--ink);
+    max-width:52ch;
+  }
+  .statement cite{
+    display:block;
+    margin-top:16px;
+    font-style:normal;
+    font-size:0.85rem;
+    color:var(--ink-faint);
+  }
+  .placeholder-photo{
+    width:100%;
+    aspect-ratio: 4/5;
+    background:
+      repeating-linear-gradient(45deg, #241d17, #241d17 12px, #1e1913 12px, #1e1913 24px);
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    padding:20px;
+  }
+  .placeholder-photo span{
+    font-size:0.85rem;
+    color:var(--ink-faint);
+    max-width:20ch;
+  }
+  .about-photo .cap{
+    margin-top:14px;
+    font-size:0.85rem;
+    color:var(--ink-faint);
+  }
+  .skills-list{
+    margin-top:34px;
+    display:flex; flex-wrap:wrap; gap:10px 14px;
+  }
+  .skills-list span{
+    font-size:0.85rem;
+    color:var(--ink-dim);
+    border:1px solid var(--line);
+    padding:7px 14px;
+    border-radius:2px;
+  }
+
+  /* ---------- WORKS ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap:6px;
+  }
+  .gwork{ position:relative; overflow:hidden; }
+  .gwork .placeholder-img{
+    width:100%; height:100%;
+    background:
+      repeating-linear-gradient(45deg, #241d17, #241d17 12px, #1e1913 12px, #1e1913 24px);
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; padding:16px;
+  }
+  .gwork .placeholder-img span{
+    font-size:0.78rem; color:var(--ink-faint);
+  }
+  .gwork .meta{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:22px 22px 20px;
+    background:linear-gradient(180deg, rgba(14,11,9,0) 0%, rgba(14,11,9,0.86) 100%);
+    opacity:0; transform:translateY(8px);
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  .gwork:hover .meta, .gwork:focus-within .meta{ opacity:1; transform:translateY(0); }
+  .gwork .meta h3{ font-size:1.08rem; color:var(--ink); font-weight:500; }
+  .gwork .meta p{ font-size:0.82rem; color:var(--ink-dim); margin-top:4px; }
+
+  .g-a{ grid-column: span 4; aspect-ratio: 4/5; }
+  .g-b{ grid-column: span 2; aspect-ratio: 1/1; }
+  .g-c{ grid-column: span 2; aspect-ratio: 1/1; }
+  .g-d{ grid-column: span 2; aspect-ratio: 3/4; }
+  .g-e{ grid-column: span 2; aspect-ratio: 3/4; }
+  .g-f{ grid-column: span 2; aspect-ratio: 3/4; }
+
+  /* ---------- EXHIBITIONS ---------- */
+  .timeline{ border-top:1px solid var(--line); }
+  .trow{
+    display:grid;
+    grid-template-columns: 110px 1fr 160px;
+    gap:24px;
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+    align-items:baseline;
+  }
+  .trow .year{
+    font-family:'Fraunces', serif;
+    font-size:1.3rem;
+    color:var(--ochre);
+  }
+  .trow .what h3{
+    font-size:1.08rem; font-weight:500; color:var(--ink);
+    margin-bottom:5px;
+  }
+  .trow .what p{ font-size:0.92rem; color:var(--ink-dim); max-width:56ch; }
+  .trow .tag{
+    font-size:0.78rem;
+    color:var(--ink-faint);
+    text-align:right;
+  }
+
+  /* ---------- COMMISSIONS ---------- */
+  .comm-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:60px;
+  }
+  .comm-step{
+    display:grid; grid-template-columns:40px 1fr;
+    gap:16px;
+    padding:20px 0;
+    border-top:1px solid var(--line);
+  }
+  .comm-step:last-child{ border-bottom:1px solid var(--line); }
+  .comm-step .n{
+    font-family:'Fraunces', serif;
+    color:var(--ink-faint);
+    font-size:1.1rem;
+  }
+  .comm-step h3{ font-size:1rem; font-weight:500; margin-bottom:6px; }
+  .comm-step p{ font-size:0.92rem; color:var(--ink-dim); }
+  .comm-text p{ color:var(--ink-dim); margin-bottom:20px; max-width:52ch; }
+  .cta-btn{
+    display:inline-block;
+    margin-top:10px;
+    padding:14px 28px;
+    background:var(--red);
+    color:var(--ink);
+    font-size:0.92rem;
+    border:1px solid var(--red-bright);
+    transition:background .2s ease, border-color .2s ease;
+  }
+  .cta-btn:hover{ background:var(--red-bright); border-color:var(--ochre); }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap:60px;
+    align-items:start;
+  }
+  .contact-lead{
+    font-family:'Fraunces', serif;
+    font-size:clamp(1.7rem,3vw,2.3rem);
+    line-height:1.35;
+    max-width:16ch;
+    color:var(--ink);
+  }
+  .contact-list{ list-style:none; }
+  .contact-list li{ padding:18px 0; border-top:1px solid var(--line); }
+  .contact-list li:last-child{ border-bottom:1px solid var(--line); }
+  .contact-list .label{ font-size:0.78rem; color:var(--ink-faint); margin-bottom:5px; }
+  .contact-list .val{ font-size:1.05rem; color:var(--ink); }
+  .contact-list a.val:hover{ color:var(--ochre); }
+
+  footer{ padding:36px 0 44px; }
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:12px;
+  }
+  footer p{ font-size:0.8rem; color:var(--ink-faint); }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width: 860px){
+    .wrap, .navwrap{ padding:0 20px; }
+    nav ul{ gap:20px; }
+    nav a{ font-size:0.82rem; }
+    .about-grid, .comm-grid, .contact-grid{ grid-template-columns:1fr; gap:44px; }
+    .about-photo{ order:-1; max-width:280px; }
+    .gallery{ grid-template-columns: repeat(2,1fr); }
+    .g-a,.g-b,.g-c,.g-d,.g-e,.g-f{ grid-column: span 1; aspect-ratio:4/5; }
+    .gwork .meta{ opacity:1; transform:none; background:linear-gradient(180deg, rgba(14,11,9,0) 30%, rgba(14,11,9,0.9) 100%); }
+    .trow{ grid-template-columns:1fr; gap:6px; }
+    .trow .tag{ text-align:left; }
+    section{ padding:76px 0; }
+    .hero{ min-height:88vh; }
+  }
+  @media (max-width: 560px){
+    nav ul{ gap:14px; }
+    nav a{ font-size:0.74rem; }
+    .brand{ font-size:0.88rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navwrap">
+    <a href="#top" class="brand">Artist <span>Name</span></a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#works">Works</a></li>
+        <li><a href="#exhibitions">Exhibitions</a></li>
+        <li><a href="#commissions">Commissions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Visual artist — City, Country</p>
+    <h1>Artist Name</h1>
+    <p class="hero-role">One or two sentences describing your practice — the mediums you work in and the ideas your work explores.</p>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="section-num">01 — About</p>
+        <h2>Biography &amp; statement</h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>[Biography paragraph one — where you're based, what you make, and the throughline of your practice. Two to four sentences works well here.]</p>
+        <p>[Biography paragraph two — background, training, influences, or how your practice developed. Keep it concrete and specific rather than generic.]</p>
+
+        <div class="statement">
+          <p>"[Your artist statement goes here — a short, first-person paragraph about what your work explores and why it matters to you.]"</p>
+          <cite>— Artist statement</cite>
+        </div>
+
+        <div class="skills-list">
+          <span>Medium one</span>
+          <span>Medium two</span>
+          <span>Medium three</span>
+          <span>Medium four</span>
+        </div>
+      </div>
+      <div class="about-photo">
+        <div class="placeholder-photo"><span>Portrait photo of the artist</span></div>
+        <p class="cap">[Photo caption]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="section-num">02 — Selected works</p>
+        <h2>Recent work</h2>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <figure class="gwork g-a">
+        <div class="placeholder-img"><span>Artwork image — landscape</span></div>
+        <figcaption class="meta">
+          <h3>Work title</h3>
+          <p>Year · Medium · Dimensions</p>
+        </figcaption>
+      </figure>
+
+      <figure class="gwork g-b">
+        <div class="placeholder-img"><span>Artwork image</span></div>
+        <figcaption class="meta">
+          <h3>Work title</h3>
+          <p>Year · Medium · Dimensions</p>
+        </figcaption>
+      </figure>
+
+      <figure class="gwork g-c">
+        <div class="placeholder-img"><span>Artwork image</span></div>
+        <figcaption class="meta">
+          <h3>Work title</h3>
+          <p>Year · Medium · Dimensions</p>
+        </figcaption>
+      </figure>
+
+      <figure class="gwork g-d">
+        <div class="placeholder-img"><span>Artwork image — portrait</span></div>
+        <figcaption class="meta">
+          <h3>Work title</h3>
+          <p>Year · Medium · Dimensions</p>
+        </figcaption>
+      </figure>
+
+      <figure class="gwork g-e">
+        <div class="placeholder-img"><span>Artwork image — portrait</span></div>
+        <figcaption class="meta">
+          <h3>Work title</h3>
+          <p>Year · Medium · Dimensions</p>
+        </figcaption>
+      </figure>
+
+      <figure class="gwork g-f">
+        <div class="placeholder-img"><span>Artwork image — portrait</span></div>
+        <figcaption class="meta">
+          <h3>Work title</h3>
+          <p>Year · Medium · Dimensions</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="exhibitions">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="section-num">03 — Exhibitions &amp; recognition</p>
+        <h2>Selected history</h2>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="trow">
+        <div class="year">2026</div>
+        <div class="what">
+          <h3>Exhibition or event title</h3>
+          <p>Venue or organiser, city.</p>
+        </div>
+        <div class="tag">Exhibited</div>
+      </div>
+      <div class="trow">
+        <div class="year">2025</div>
+        <div class="what">
+          <h3>Exhibition or event title</h3>
+          <p>Venue or organiser, city.</p>
+        </div>
+        <div class="tag">Award</div>
+      </div>
+      <div class="trow">
+        <div class="year">2024</div>
+        <div class="what">
+          <h3>Exhibition or event title</h3>
+          <p>Venue or organiser, city.</p>
+        </div>
+        <div class="tag">Press</div>
+      </div>
+      <div class="trow">
+        <div class="year">2023</div>
+        <div class="what">
+          <h3>Exhibition or event title</h3>
+          <p>Venue or organiser, city.</p>
+        </div>
+        <div class="tag">Selected</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="commissions">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="section-num">04 — Commissions</p>
+        <h2>Working together</h2>
+      </div>
+    </div>
+
+    <div class="comm-grid">
+      <div class="comm-text">
+        <p>[A short paragraph describing what kinds of commissions you accept — subject matter, medium, typical scale — and how you like to work with clients.]</p>
+        <p>[A second paragraph on how to start — what you need from them, and roughly how long the process takes.]</p>
+        <a class="cta-btn" href="mailto:you@example.com?subject=Commission%20enquiry">Start a commission enquiry</a>
+      </div>
+      <div class="comm-steps">
+        <div class="comm-step">
+          <div class="n">1</div>
+          <div><h3>Enquiry</h3><p>Short description of this step.</p></div>
+        </div>
+        <div class="comm-step">
+          <div class="n">2</div>
+          <div><h3>Proposal</h3><p>Short description of this step.</p></div>
+        </div>
+        <div class="comm-step">
+          <div class="n">3</div>
+          <div><h3>Progress</h3><p>Short description of this step.</p></div>
+        </div>
+        <div class="comm-step">
+          <div class="n">4</div>
+          <div><h3>Delivery</h3><p>Short description of this step.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="section-num">05 — Contact</p>
+        <h2>Get in touch</h2>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+      <p class="contact-lead">Available for exhibitions, commissions and collaborative projects.</p>
+      <ul class="contact-list">
+        <li>
+          <p class="label">Email</p>
+          <a class="val" href="mailto:you@example.com">you@example.com</a>
+        </li>
+        <li>
+          <p class="label">Phone</p>
+          <a class="val" href="tel:+10000000000">+1 000 000 0000</a>
+        </li>
+        <li>
+          <p class="label">Instagram</p>
+          <a class="val" href="#" target="_blank" rel="noopener">@yourhandle</a>
+        </li>
+        <li>
+          <p class="label">Website</p>
+          <a class="val" href="#" target="_blank" rel="noopener">yourdomain.com</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Artist Name</p>
+    <p>City, Country</p>
+  </div>
+</footer>
+
+</body>
+</html>
