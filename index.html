@@ -734,6 +734,235 @@
     }
   }
 
+
+  /* ---------- FINAL HOME ---------- */
+  header{
+    position:absolute;
+    inset:0 0 auto 0;
+    z-index:200;
+    pointer-events:none;
+  }
+  .home-nav{
+    width:100%;
+    padding:0;
+    display:block;
+  }
+  .home-brand{ display:none !important; }
+
+  .menu-button{
+    position:absolute;
+    top:clamp(165px, 20vh, 230px);
+    right:clamp(28px, 7vw, 78px);
+    pointer-events:auto;
+    border:0;
+    border-radius:0;
+    background:#000;
+    color:#fff;
+    min-width:130px;
+    padding:20px 30px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:clamp(1.05rem, 2.4vw, 1.45rem);
+    font-weight:700;
+    line-height:1;
+    cursor:pointer;
+  }
+  .menu-button::after{ content:"Menu"; }
+  .menu-lines{ display:none !important; }
+
+  .hero{
+    position:relative;
+    width:100%;
+    min-height:100svh;
+    padding:0;
+    margin:0;
+    overflow:hidden;
+    background:#000;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:url('images/DSC00003.jpeg') center center / cover no-repeat;
+  }
+  .hero-content{
+    position:absolute;
+    z-index:2;
+    top:clamp(150px, 18vh, 210px);
+    left:clamp(24px, 6vw, 70px);
+    width:auto;
+    padding:0;
+    margin:0;
+  }
+  .hero h1{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:clamp(3.7rem, 11vw, 9rem);
+    font-weight:400;
+    letter-spacing:-0.055em;
+    line-height:.88;
+    text-transform:uppercase;
+    color:#fff;
+    max-width:8ch;
+  }
+  .hero-scroll,
+  .hero-eyebrow,
+  .hero-role{ display:none !important; }
+
+  @media (max-width:700px){
+    .hero-content{
+      top:155px;
+      left:24px;
+    }
+    .hero h1{
+      font-size:clamp(3.55rem, 15vw, 5.9rem);
+      line-height:.88;
+    }
+    .menu-button{
+      top:205px;
+      right:22px;
+      min-width:105px;
+      padding:16px 20px;
+      font-size:1.05rem;
+    }
+    .hero::before{
+      background:url('images/DSC00003.jpeg') center center / cover no-repeat;
+    }
+  }
+
+
+  /* ---------- PAGE VIEW BEHAVIOUR ---------- */
+  main > section:not(.hero){
+    display:none;
+  }
+  main > section.is-active{
+    display:block;
+  }
+  .hero.is-hidden{
+    display:none;
+  }
+
+  .menu-panel{
+    transform:none !important;
+    width:min(620px, 88vw);
+    min-height:auto;
+    background:#fff;
+    color:#000;
+    padding:72px 48px 56px;
+  }
+  .menu-overlay.is-open .menu-panel{
+    transform:none !important;
+  }
+  .menu-panel nav ul{
+    gap:28px;
+  }
+  .menu-panel nav a{
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:400;
+    letter-spacing:-0.03em;
+    transform:none !important;
+  }
+  .menu-panel nav a:hover,
+  .menu-panel nav a:focus-visible{
+    transform:none !important;
+    opacity:.55;
+  }
+
+  @media (max-width:700px){
+    .menu-panel{
+      width:88vw;
+      padding:72px 34px 48px;
+      transform:none !important;
+    }
+    .menu-overlay.is-open .menu-panel{
+      transform:none !important;
+    }
+  }
+
+
+  /* ---------- HOME POSITION UPDATE ---------- */
+  .hero-content{
+    top:auto !important;
+    left:clamp(24px, 6vw, 70px) !important;
+    bottom:clamp(28px, 5vh, 60px) !important;
+  }
+
+  .menu-button{
+    top:24px !important;
+    right:24px !important;
+    min-width:0 !important;
+    width:48px !important;
+    height:42px !important;
+    padding:0 !important;
+    background:transparent !important;
+    display:flex !important;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+  }
+  .menu-button::after{ content:none !important; }
+  .menu-lines{
+    display:flex !important;
+    flex-direction:column;
+    gap:6px;
+    width:32px;
+  }
+  .menu-lines span{
+    display:block;
+    width:32px;
+    height:3px;
+    background:#fff;
+    border-radius:0;
+  }
+
+  @media (max-width:700px){
+    .hero-content{
+      top:auto !important;
+      left:24px !important;
+      bottom:28px !important;
+    }
+    .menu-button{
+      top:20px !important;
+      right:20px !important;
+      width:44px !important;
+      height:40px !important;
+    }
+    .menu-lines,
+    .menu-lines span{
+      width:30px;
+    }
+  }
+
+
+  /* ---------- TYPOGRAPHY + COMMISSIONS UPDATE ---------- */
+  .hero h1{
+    font-weight:300 !important;
+    letter-spacing:-0.045em !important;
+  }
+
+  .commission-upload-gallery{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:18px;
+    margin-top:34px;
+  }
+  .commission-upload-gallery figure{
+    margin:0;
+  }
+  .commission-upload-gallery img{
+    display:block;
+    width:100%;
+    height:auto;
+  }
+  .commission-upload-gallery figcaption{
+    margin-top:9px;
+    font-size:.85rem;
+    opacity:.7;
+  }
+  @media(max-width:700px){
+    .commission-upload-gallery{grid-template-columns:1fr;}
+  }
+
 </style>
 </head>
 <body>
@@ -741,11 +970,9 @@
 <header>
   <div class="home-nav">
     <a href="#top" class="home-brand" aria-label="Home">DARLINGTON RAYMOND</a>
-    <button class="menu-button" id="menuButton" type="button" aria-label="Open menu" aria-controls="siteMenu" aria-expanded="false">
+    <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false" aria-controls="siteMenu">
       <span class="menu-lines" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </span>
     </button>
   </div>
@@ -756,16 +983,20 @@
     <button class="menu-close" id="menuClose" type="button" aria-label="Close menu">×</button>
     <nav aria-label="Primary">
       <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#exhibitions">Exhibitions</a></li>
-        <li><a href="#commissions">Commissions</a></li>
-        <li><a href="#works">Work</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#home" data-view="home">Home</a></li>
+        <li><a href="#about" data-view="about">About</a></li>
+        <li><a href="#exhibitions" data-view="exhibitions">Exhibitions</a></li>
+        <li><a href="#publications" data-view="publications">Publications</a></li>
+        <li><a href="#awards" data-view="awards">Awards</a></li>
+        <li><a href="#commissions" data-view="commissions">Commissions</a></li>
+        <li><a href="#works" data-view="works">Work</a></li>
+        <li><a href="#contact" data-view="contact">Contact</a></li>
       </ul>
     </nav>
   </div>
 </div>
 
+<main>
 <section class="hero" id="top">
   <div class="hero-content">
     <h1>DARLINGTON<br>RAYMOND</h1>
@@ -1079,48 +1310,67 @@
 
 
 
-<section id="commissions">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <p class="section-num">04 — Commissions</p>
-        <h2>Working together</h2>
-      </div>
-    </div>
 
-    <div class="comm-grid">
-      <div class="comm-text">
-        <p>[A short paragraph describing what kinds of commissions you accept — subject matter, medium, typical scale — and how you like to work with clients.]</p>
-        <p>[A second paragraph on how to start — what you need from them, and roughly how long the process takes.]</p>
-        <a class="cta-btn" href="mailto:you@example.com?subject=Commission%20enquiry">Start a commission enquiry</a>
-      </div>
-      <div class="comm-steps">
-        <div class="comm-step">
-          <div class="n">1</div>
-          <div><h3>Enquiry</h3><p>Short description of this step.</p></div>
+    <section id="publications">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-num">04 — Publications</p>
+            <h2>Publications</h2>
+          </div>
         </div>
-        <div class="comm-step">
-          <div class="n">2</div>
-          <div><h3>Proposal</h3><p>Short description of this step.</p></div>
-        </div>
-        <div class="comm-step">
-          <div class="n">3</div>
-          <div><h3>Progress</h3><p>Short description of this step.</p></div>
-        </div>
-        <div class="comm-step">
-          <div class="n">4</div>
-          <div><h3>Delivery</h3><p>Short description of this step.</p></div>
+        <div class="publication-list">
+          <!-- Add press, interviews, catalogues and publication features here. -->
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
+
+    <section id="awards">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-num">05 — Awards</p>
+            <h2>Awards</h2>
+          </div>
+        </div>
+        <div class="awards-list">
+          <!-- Add awards, prizes and recognitions here. -->
+        </div>
+      </div>
+    </section>
+
+<section id="commissions">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="section-num">06 — Commissions</p>
+            <h2>Commissioned Works</h2>
+          </div>
+        </div>
+
+        <p class="lead">A selection of commissioned paintings.</p>
+
+        <!--
+          ADD COMMISSIONED PAINTINGS HERE.
+          Copy the figure block below for each new work and replace
+          the image filename, title and details.
+
+          <figure>
+            <img src="images/your-painting.jpg" alt="Commissioned painting by Darlington Raymond">
+            <figcaption>Artwork title · Year</figcaption>
+          </figure>
+        -->
+
+        <div class="commission-upload-gallery">
+        </div>
+      </div>
+    </section>
 
 <section id="contact">
   <div class="wrap">
     <div class="section-head">
       <div>
-        <p class="section-num">05 — Contact</p>
+        <p class="section-num">07 — Contact</p>
         <h2>Get in touch</h2>
       </div>
     </div>
@@ -1157,11 +1407,15 @@
 </footer>
 
 
+</main>
+
 <script>
   const menuButton = document.getElementById('menuButton');
   const menu = document.getElementById('siteMenu');
   const menuClose = document.getElementById('menuClose');
-  const menuLinks = menu.querySelectorAll('a');
+  const menuLinks = menu.querySelectorAll('a[data-view]');
+  const hero = document.getElementById('top');
+  const contentSections = Array.from(document.querySelectorAll('main > section:not(.hero)'));
 
   function openMenu(){
     menu.classList.add('is-open');
@@ -1171,22 +1425,45 @@
     menuClose.focus();
   }
 
-  function closeMenu(){
+  function closeMenu(restoreFocus = true){
     menu.classList.remove('is-open');
     menu.setAttribute('aria-hidden', 'true');
     menuButton.setAttribute('aria-expanded', 'false');
     document.body.classList.remove('menu-open');
-    menuButton.focus();
+    if (restoreFocus) menuButton.focus();
+  }
+
+  function showView(view){
+    contentSections.forEach(section => section.classList.remove('is-active'));
+
+    if(view === 'home'){
+      hero.classList.remove('is-hidden');
+      window.scrollTo({top: 0, behavior: 'instant'});
+      document.title = 'Darlington Raymond';
+    } else {
+      hero.classList.add('is-hidden');
+      const target = document.getElementById(view);
+      if(target){
+        target.classList.add('is-active');
+        window.scrollTo({top: 0, behavior: 'instant'});
+        const heading = target.querySelector('h2, h1');
+        document.title = heading ? `${heading.textContent.trim()} — Darlington Raymond` : 'Darlington Raymond';
+      }
+    }
   }
 
   menuButton.addEventListener('click', openMenu);
-  menuClose.addEventListener('click', closeMenu);
-  menuLinks.forEach(link => link.addEventListener('click', () => {
-    menu.classList.remove('is-open');
-    menu.setAttribute('aria-hidden', 'true');
-    menuButton.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('menu-open');
-  }));
+  menuClose.addEventListener('click', () => closeMenu());
+
+  menuLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      const view = link.dataset.view;
+      closeMenu(false);
+      showView(view);
+      history.replaceState(null, '', view === 'home' ? '#home' : `#${view}`);
+    });
+  });
 
   menu.addEventListener('click', (event) => {
     if(event.target === menu) closeMenu();
@@ -1195,6 +1472,13 @@
   document.addEventListener('keydown', (event) => {
     if(event.key === 'Escape' && menu.classList.contains('is-open')) closeMenu();
   });
+
+  const initial = location.hash.replace('#','');
+  if(['about','exhibitions','publications','awards','commissions','works','contact'].includes(initial)){
+    showView(initial);
+  } else {
+    showView('home');
+  }
 </script>
 
 </body>
