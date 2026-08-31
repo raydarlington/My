@@ -260,6 +260,94 @@
     text-align:right;
   }
 
+
+  /* ---------- REFLECTION 2026 ---------- */
+  .reflection-hero{
+    display:grid;
+    grid-template-columns:minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap:56px;
+    align-items:end;
+    margin-bottom:46px;
+  }
+  .reflection-copy .eyebrow{
+    color:var(--ochre);
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1rem;
+    margin-bottom:14px;
+  }
+  .reflection-copy h3{
+    font-size:clamp(2rem, 4vw, 3.5rem);
+    line-height:1.05;
+    margin-bottom:20px;
+  }
+  .reflection-copy p{
+    color:var(--ink-dim);
+    max-width:58ch;
+    margin-bottom:14px;
+  }
+  .reflection-facts{
+    border-top:1px solid var(--line);
+  }
+  .reflection-fact{
+    display:grid;
+    grid-template-columns:110px 1fr;
+    gap:18px;
+    padding:15px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .reflection-fact dt{
+    color:var(--ink-faint);
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
+  .reflection-fact dd{
+    color:var(--ink);
+    font-size:0.94rem;
+  }
+  .reflection-gallery{
+    display:grid;
+    grid-template-columns:repeat(12, 1fr);
+    gap:8px;
+  }
+  .reflection-gallery figure{
+    position:relative;
+    overflow:hidden;
+    min-height:240px;
+    background:var(--bg-raised);
+  }
+  .reflection-gallery img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    transition:transform .45s ease, filter .45s ease;
+  }
+  .reflection-gallery figure:hover img{
+    transform:scale(1.015);
+  }
+  .reflection-gallery figcaption{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    padding:28px 18px 14px;
+    font-size:0.78rem;
+    color:var(--ink);
+    background:linear-gradient(180deg, transparent, rgba(14,11,9,.78));
+    opacity:0;
+    transition:opacity .25s ease;
+  }
+  .reflection-gallery figure:hover figcaption,
+  .reflection-gallery figure:focus-within figcaption{
+    opacity:1;
+  }
+  .r-wide{ grid-column:span 8; aspect-ratio:16/10; }
+  .r-tall{ grid-column:span 4; aspect-ratio:3/4; }
+  .r-half{ grid-column:span 6; aspect-ratio:4/3; }
+  .r-third{ grid-column:span 4; aspect-ratio:4/5; }
+  .r-poster{ grid-column:span 4; aspect-ratio:4/5; }
+  .r-art{ grid-column:span 4; aspect-ratio:4/5; }
+
   /* ---------- COMMISSIONS ---------- */
   .comm-grid{
     display:grid;
@@ -326,18 +414,22 @@
     .wrap, .navwrap{ padding:0 20px; }
     nav ul{ gap:20px; }
     nav a{ font-size:0.82rem; }
-    .about-grid, .comm-grid, .contact-grid{ grid-template-columns:1fr; gap:44px; }
+    .about-grid, .comm-grid, .contact-grid, .reflection-hero{ grid-template-columns:1fr; gap:44px; }
     .about-photo{ order:-1; max-width:280px; }
     .gallery{ grid-template-columns: repeat(2,1fr); }
     .g-a,.g-b,.g-c,.g-d,.g-e,.g-f{ grid-column: span 1; aspect-ratio:4/5; }
     .gwork .meta{ opacity:1; transform:none; background:linear-gradient(180deg, rgba(14,11,9,0) 30%, rgba(14,11,9,0.9) 100%); }
     .trow{ grid-template-columns:1fr; gap:6px; }
     .trow .tag{ text-align:left; }
+    .reflection-gallery{ grid-template-columns:repeat(2,1fr); }
+    .r-wide,.r-tall,.r-half,.r-third,.r-poster,.r-art{ grid-column:span 1; aspect-ratio:4/5; }
+    .reflection-gallery figcaption{ opacity:1; }
     section{ padding:76px 0; }
     .hero{ min-height:88vh; }
   }
   @media (max-width: 560px){
-    nav ul{ gap:14px; }
+    nav{ overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    nav ul{ gap:14px; min-width:max-content; }
     nav a{ font-size:0.74rem; }
     .brand{ font-size:0.88rem; }
   }
@@ -357,6 +449,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#works">Works</a></li>
         <li><a href="#exhibitions">Exhibitions</a></li>
+        <li><a href="#reflection">Reflection</a></li>
         <li><a href="#commissions">Commissions</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -512,11 +605,110 @@
   </div>
 </section>
 
+
+<section id="reflection">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="section-num">04 — Exhibition focus</p>
+        <h2>Reflection, 2026</h2>
+      </div>
+    </div>
+
+    <div class="reflection-hero">
+      <div class="reflection-copy">
+        <p class="eyebrow">One Art Gallery · Lagos, Nigeria</p>
+        <h3>Reflection</h3>
+        <p>
+          A multimedia showcase presented at One Art Gallery in Lagos, bringing together
+          figurative, portrait and mixed-media approaches in a shared exhibition setting.
+          This selection documents the installation, visitors engaging with the works,
+          and featured pieces from the exhibition.
+        </p>
+        <p>
+          The exhibition opened on 4 July 2026 and ran through 17 July 2026.
+        </p>
+      </div>
+
+      <dl class="reflection-facts">
+        <div class="reflection-fact">
+          <dt>Exhibition</dt>
+          <dd>Reflection — A Multimedia Showcase</dd>
+        </div>
+        <div class="reflection-fact">
+          <dt>Venue</dt>
+          <dd>One Art Gallery, Lagos, Nigeria</dd>
+        </div>
+        <div class="reflection-fact">
+          <dt>Dates</dt>
+          <dd>4–17 July 2026</dd>
+        </div>
+        <div class="reflection-fact">
+          <dt>Format</dt>
+          <dd>Group exhibition / multimedia showcase</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="reflection-gallery" aria-label="Reflection exhibition gallery">
+      <figure class="r-wide">
+        <img src="image/IMG_7262.jpeg" alt="Visitor viewing paintings on an ochre gallery wall during Reflection at One Art Gallery" loading="lazy">
+        <figcaption>Installation view — Reflection, One Art Gallery, Lagos.</figcaption>
+      </figure>
+
+      <figure class="r-tall">
+        <img src="image/IMG_7263.jpeg" alt="Visitor viewing a monochrome portrait artwork on a dark gallery wall" loading="lazy">
+        <figcaption>Visitor engagement during the exhibition.</figcaption>
+      </figure>
+
+      <figure class="r-half">
+        <img src="image/IMG_7264.png" alt="Visitor viewing artworks in a bright gallery space during Reflection" loading="lazy">
+        <figcaption>Gallery view from Reflection.</figcaption>
+      </figure>
+
+      <figure class="r-half">
+        <img src="image/IMG_7267.jpeg" alt="Three paintings installed under spotlights on an ochre gallery wall" loading="lazy">
+        <figcaption>Installation view of works presented on the ochre wall.</figcaption>
+      </figure>
+
+      <figure class="r-half">
+        <img src="image/IMG_7266.jpeg" alt="Visitor walking past a sequence of colorful framed artworks on a red gallery wall" loading="lazy">
+        <figcaption>Exhibition view with works displayed on the red wall.</figcaption>
+      </figure>
+
+      <figure class="r-half">
+        <img src="image/IMG_7261.jpeg" alt="Two visitors discussing a figurative painting at the Reflection exhibition" loading="lazy">
+        <figcaption>Visitors in conversation with a featured work.</figcaption>
+      </figure>
+
+      <figure class="r-poster">
+        <img src="image/IMG_6734.png" alt="Reflection 2026 exhibition poster for One Art Gallery in Lagos" loading="lazy">
+        <figcaption>Reflection exhibition poster, 2026.</figcaption>
+      </figure>
+
+      <figure class="r-art">
+        <img src="image/13CAF219-BFC1-46D8-83C8-96C77374AA91.jpeg" alt="Figurative painting of a reclining woman in red surrounded by large green leaves" loading="lazy">
+        <figcaption>Featured work from Reflection.</figcaption>
+      </figure>
+
+      <figure class="r-art">
+        <img src="image/49C3C46F-03C0-42B2-B3A7-36D5392FE84D.jpeg" alt="Painting of a hand holding a metal lantern" loading="lazy">
+        <figcaption>Featured work from Reflection.</figcaption>
+      </figure>
+
+      <figure class="r-art">
+        <img src="image/9AD5BCAE-B2CB-4963-8FC1-1B8DCA7B97C8.jpeg" alt="Figurative painting with hands covering a person's face against a grey background" loading="lazy">
+        <figcaption>Featured work from Reflection.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section id="commissions">
   <div class="wrap">
     <div class="section-head">
       <div>
-        <p class="section-num">04 — Commissions</p>
+        <p class="section-num">05 — Commissions</p>
         <h2>Working together</h2>
       </div>
     </div>
@@ -553,7 +745,7 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <p class="section-num">05 — Contact</p>
+        <p class="section-num">06 — Contact</p>
         <h2>Get in touch</h2>
       </div>
     </div>
