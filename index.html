@@ -1712,6 +1712,48 @@ body #menuButton .menu-lines span {
 }
 </style>
 
+
+<style id="about-menu-match-home-svg">
+/* ABOUT MENU: exact same SVG three-line structure as HOME */
+.about-menu-proxy{
+  -webkit-appearance:none !important;
+  appearance:none !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  background-color:transparent !important;
+  box-shadow:none !important;
+  outline:0 !important;
+  min-width:0 !important;
+  width:46px !important;
+  height:42px !important;
+  padding:0 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:visible !important;
+}
+.about-menu-proxy::before,
+.about-menu-proxy::after{
+  content:none !important;
+  display:none !important;
+}
+.about-menu-proxy .about-menu-icon{
+  display:block !important;
+  width:34px !important;
+  height:22px !important;
+  overflow:visible !important;
+  flex:none !important;
+}
+.about-menu-proxy .about-menu-icon line{
+  stroke:#000000 !important;
+  stroke-width:2 !important;
+  stroke-linecap:butt !important;
+  vector-effect:non-scaling-stroke !important;
+  opacity:1 !important;
+}
+</style>
+
 </head>
 <body>
 
@@ -1757,9 +1799,11 @@ body #menuButton .menu-lines span {
   <div class="about-reference-inner">
 
     <div class="about-reference-topbar">
-      <button class="about-menu-proxy" type="button" aria-label="Open menu" onclick="document.getElementById('menuButton').click()">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="about-menu-proxy" type="button" aria-label="Open menu" onclick="document.getElementById('menuButton').click()"><svg class="about-menu-icon" viewBox="0 0 34 22" width="34" height="22" aria-hidden="true" focusable="false">
+        <line x1="0" y1="1" x2="34" y2="1"></line>
+        <line x1="0" y1="11" x2="34" y2="11"></line>
+        <line x1="0" y1="21" x2="34" y2="21"></line>
+      </svg></button>
       <div class="about-name">Darlington Raymond</div>
       <div class="about-top-spacer" aria-hidden="true"></div>
     </div>
