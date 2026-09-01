@@ -2323,59 +2323,65 @@ body:has(#works.is-active) #menuButton{display:none !important;}
 </style>
 
 
+
+
+
 <style id="contact-clean-white">
 #contact{
   background:#fff !important;
   color:#111 !important;
   min-height:100vh;
   padding:0 !important;
-  border:0 !important;
 }
 #contact .contact-clean-inner{
   width:min(1180px, calc(100% - 48px));
   margin:0 auto;
-  padding:100px 0 80px;
+  padding:110px 0 90px;
 }
-#contact .contact-clean-copy{
+#contact h2{
+  margin:0 0 48px !important;
+  color:#111 !important;
+  font:400 clamp(2.2rem,6vw,4.5rem)/1.05 'Work Sans',sans-serif !important;
+}
+#contact .contact-availability{
   max-width:720px;
-  padding-bottom:34px;
-  border-bottom:1px solid rgba(0,0,0,.22);
-}
-#contact .contact-clean-copy h2{
-  margin:0 0 14px;
-  font-family:'Work Sans',sans-serif;
-  font-size:1.5rem;
-  line-height:1.2;
-  font-weight:400;
-  color:#111;
-}
-#contact .contact-clean-copy p{
-  margin:0;
-  font-family:'Work Sans',sans-serif;
-  font-size:1rem;
-  line-height:1.6;
-  color:#444;
+  margin:0 0 54px !important;
+  color:#111 !important;
+  font:400 clamp(1.65rem,4.6vw,3.5rem)/1.25 'Work Sans',sans-serif !important;
 }
 #contact .contact-clean-links{
+  border-top:1px solid #111;
+  padding-top:30px;
   display:flex;
   flex-direction:column;
   align-items:flex-start;
-  gap:12px;
-  padding-top:30px;
+  gap:8px;
 }
 #contact .contact-clean-links a{
-  color:#111;
-  font-family:'Work Sans',sans-serif;
-  font-size:1rem;
-  text-decoration:none;
-  border-bottom:1px solid #111;
-  padding-bottom:2px;
+  color:#111 !important;
+  font:400 1.15rem/1.35 'Work Sans',sans-serif !important;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+body:has(#contact.is-active){
+  background:#fff !important;
+}
+body:has(#contact.is-active) #menuButton,
+body:has(#contact.is-active) .menu-button{
+  color:#111 !important;
+  background:transparent !important;
+}
+body:has(#contact.is-active) #menuButton svg line,
+body:has(#contact.is-active) .menu-button svg line{
+  stroke:#111 !important;
 }
 @media(max-width:700px){
   #contact .contact-clean-inner{
     width:calc(100% - 36px);
-    padding-top:88px;
+    padding-top:92px;
   }
+  #contact h2{ margin-bottom:40px !important; }
+  #contact .contact-availability{ margin-bottom:46px !important; }
 }
 </style>
 
@@ -2867,18 +2873,18 @@ body:has(#works.is-active) #menuButton{display:none !important;}
 </section>
 
 
+
 <section id="contact" class="contact-clean-page">
   <div class="contact-clean-inner">
-    <div class="contact-clean-copy">
-      <h2>Contact</h2>
-      <p>Open for collaboration. You can contact me via email or Instagram.</p>
-    </div>
+    <h2>Contact</h2>
+    <p class="contact-availability">Available for exhibitions, commissions and collaborative projects.</p>
     <div class="contact-clean-links">
-      <a href="mailto:raydarlington21@gmail.com">raydarlington21@gmail.com</a>
-      <a href="https://www.instagram.com/Ray__darlington" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:raydarlington21@gmail.com">email</a>
+      <a href="https://www.instagram.com/Ray__darlington" target="_blank" rel="noopener">instagram</a>
     </div>
   </div>
 </section>
+
 
 
 <footer>
