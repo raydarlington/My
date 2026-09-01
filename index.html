@@ -2826,6 +2826,92 @@ body:has(#awards.is-active) .menu-button svg line{stroke:#111 !important;}
 }
 </style>
 
+<style id="works-collaborations-style">
+#works .works-collaborations{
+  width:100%;
+  margin:58px 0 0;
+  padding:0;
+}
+#works .collaboration-folder{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  padding:22px 0;
+  border:0;
+  border-top:1px solid rgba(0,0,0,.28);
+  border-bottom:1px solid rgba(0,0,0,.28);
+  background:transparent;
+  color:#111;
+  text-align:left;
+  cursor:pointer;
+  font-family:'Work Sans',sans-serif;
+}
+#works .collaboration-folder > span:first-child{
+  font-size:1.3rem;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+#works .collaboration-folder-note{
+  font-size:.9rem;
+  color:#666;
+}
+#works .collaboration-detail[hidden]{display:none!important}
+#works .collaboration-detail{
+  padding:8px 0 40px;
+}
+#works .collaboration-back{
+  margin:18px 0 42px;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:#111;
+  font:400 .95rem/1.4 'Work Sans',sans-serif;
+  cursor:pointer;
+}
+#works .collaboration-copy{
+  max-width:720px;
+  margin:0 0 28px;
+}
+#works .collaboration-kicker{
+  margin:0 0 8px;
+  color:#666;
+  font:400 .9rem/1.4 'Work Sans',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+}
+#works .collaboration-copy h3{
+  margin:0 0 12px;
+  color:#111;
+  font:400 clamp(1.5rem,3.5vw,2.2rem)/1.2 'Work Sans',sans-serif;
+}
+#works .collaboration-copy p{
+  margin:0;
+  color:#333;
+  font:400 1rem/1.65 'Work Sans',sans-serif;
+}
+#works .collaboration-video-wrap{
+  width:min(760px,100%);
+  aspect-ratio:16/9;
+  background:#000;
+  overflow:hidden;
+}
+#works .collaboration-video-frame{
+  display:block;
+  width:100%;
+  height:100%;
+  border:0;
+  background:#000;
+}
+@media(max-width:700px){
+  #works .works-collaborations{margin-top:44px}
+  #works .collaboration-folder{padding:19px 0}
+  #works .collaboration-detail{padding-bottom:24px}
+  #works .collaboration-back{margin:18px 0 32px}
+}
+</style>
+
 </head>
 <body>
 
@@ -2999,6 +3085,31 @@ body:has(#awards.is-active) .menu-button svg line{stroke:#111 !important;}
         <h3>OKOLA OBINRIN (tribal marked woman)</h3>
         <p>20 × 24 inches · <em>Pastel on paper</em></p>
       </article>
+      </div>
+
+      <div class="works-collaborations">
+        <button class="collaboration-folder" type="button" aria-expanded="false">
+          <span>Collaborations</span>
+          <span class="collaboration-folder-note">View project</span>
+        </button>
+
+        <div class="collaboration-detail" hidden>
+          <button class="collaboration-back" type="button">← Back to Works</button>
+          <div class="collaboration-copy">
+            <p class="collaboration-kicker">COVID-19 Pandemic</p>
+            <h3>Darlington Raymond × David Adeoti</h3>
+            <p>A collaborative piece created with David Adeoti during the COVID-19 pandemic.</p>
+          </div>
+          <div class="collaboration-video-wrap">
+            <iframe
+              class="collaboration-video-frame"
+              src="https://drive.google.com/file/d/1WwRR2Ih2CpaIwNAYqy1f6LmqJ_JvSXK8/preview"
+              title="Darlington Raymond and David Adeoti collaboration video"
+              allow="autoplay"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -3497,6 +3608,47 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   });
+});
+</script>
+
+<script id="works-collaborations-script">
+document.addEventListener('DOMContentLoaded', function () {
+  const works = document.getElementById('works');
+  if (!works) return;
+  const folder = works.querySelector('.collaboration-folder');
+  const detail = works.querySelector('.collaboration-detail');
+  const back = works.querySelector('.collaboration-back');
+  const statement = works.querySelector('.works-statement');
+  const grid = works.querySelector('.works-flat-grid');
+  if (!folder || !detail) return;
+
+  function openCollaboration() {
+    if (statement) statement.style.display = 'none';
+    if (grid) grid.style.display = 'none';
+    folder.style.display = 'none';
+    detail.hidden = false;
+    folder.setAttribute('aria-expanded', 'true');
+    works.scrollTop = 0;
+    window.scrollTo(0, 0);
+  }
+
+  function closeCollaboration() {
+    if (statement) statement.style.display = '';
+    if (grid) grid.style.display = '';
+    folder.style.display = '';
+    detail.hidden = true;
+    folder.setAttribute('aria-expanded', 'false');
+    const frame = detail.querySelector('.collaboration-video-frame');
+    if (frame) {
+      const src = frame.src;
+      frame.src = src;
+    }
+    works.scrollTop = 0;
+    window.scrollTo(0, 0);
+  }
+
+  folder.addEventListener('click', openCollaboration);
+  if (back) back.addEventListener('click', closeCollaboration);
 });
 </script>
 
