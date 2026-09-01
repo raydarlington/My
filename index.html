@@ -2385,6 +2385,73 @@ body:has(#contact.is-active) .menu-button svg line{
 }
 </style>
 
+
+<style id="contact-awards-publications-clean">
+/* Contact: keep menu clear and center the page title */
+#contact.contact-clean-page .contact-clean-inner{
+  padding-top:110px !important;
+}
+#contact.contact-clean-page h2{
+  text-align:center !important;
+  width:100% !important;
+  margin:0 0 48px !important;
+}
+
+/* Awards + Publications: plain white holding pages with accessible normal menu */
+#awards,
+#publications{
+  background:#fff !important;
+  color:#111 !important;
+  min-height:100vh !important;
+  padding-top:100px !important;
+}
+#awards *,
+#publications *{
+  color:#111;
+}
+body:has(#awards.is-active),
+body:has(#publications.is-active){
+  background:#fff !important;
+}
+body:has(#awards.is-active) #menuButton,
+body:has(#publications.is-active) #menuButton,
+body:has(#awards.is-active) .menu-button,
+body:has(#publications.is-active) .menu-button{
+  display:flex !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  pointer-events:auto !important;
+  color:#111 !important;
+  background:transparent !important;
+  z-index:10020 !important;
+}
+body:has(#awards.is-active) #menuButton svg line,
+body:has(#publications.is-active) #menuButton svg line,
+body:has(#awards.is-active) .menu-button svg line,
+body:has(#publications.is-active) .menu-button svg line{
+  stroke:#111 !important;
+}
+
+/* Hide existing Awards/Publications page content for now, without removing it */
+#awards > *:not(.page-header):not(.section-header),
+#publications > *:not(.page-header):not(.section-header){
+  display:none !important;
+}
+@media(max-width:700px){
+  #contact.contact-clean-page .contact-clean-inner{
+    padding-top:105px !important;
+  }
+  #contact.contact-clean-page h2{
+    font-size:2.25rem !important;
+    margin-bottom:44px !important;
+  }
+  #awards,
+  #publications{
+    padding-top:96px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
