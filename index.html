@@ -2653,6 +2653,99 @@ body:has(#exhibitions.is-active) .menu-button svg line{
 #exhibitions .bradford-photo-grid img{display:block;width:100%;height:auto}
 @media(max-width:700px){#exhibitions .bradford-photo-grid{grid-template-columns:1fr;gap:14px}}
 </style>
+<style id="publications-clean-style">
+#publications{
+  background:#fff !important;
+  color:#111 !important;
+  min-height:100vh !important;
+  padding:0 !important;
+}
+#publications > .publications-clean-inner{
+  display:block !important;
+  width:min(980px, calc(100% - 48px));
+  margin:0 auto;
+  padding:108px 0 90px;
+}
+#publications .publications-clean-inner h2{
+  margin:0 0 58px;
+  text-align:center;
+  color:#111;
+  font:400 clamp(2.2rem,6vw,4.4rem)/1.05 'Work Sans',sans-serif;
+}
+#publications .publications-group{
+  display:block !important;
+  margin-top:42px;
+}
+#publications .publications-group:first-of-type{margin-top:0}
+#publications .publications-group-title{
+  display:block !important;
+  margin:0 0 14px;
+  color:#555;
+  font:400 .9rem/1.4 'Work Sans',sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+#publications .publication-row{
+  display:flex !important;
+  justify-content:space-between;
+  gap:24px;
+  align-items:flex-start;
+  padding:24px 0;
+  border-top:1px solid rgba(0,0,0,.24);
+  color:#111 !important;
+  text-decoration:none !important;
+}
+#publications .publication-row:last-child{
+  border-bottom:1px solid rgba(0,0,0,.24);
+}
+#publications .publication-source{
+  display:block !important;
+  margin-bottom:7px;
+  color:#555;
+  font:400 .9rem/1.4 'Work Sans',sans-serif;
+}
+#publications .publication-row h3{
+  display:block !important;
+  margin:0 0 7px;
+  color:#111;
+  font:400 clamp(1.12rem,2.4vw,1.45rem)/1.35 'Work Sans',sans-serif;
+}
+#publications .publication-row p{
+  display:block !important;
+  margin:0;
+  color:#666;
+  font:400 .92rem/1.4 'Work Sans',sans-serif;
+}
+#publications .publication-arrow{
+  display:block !important;
+  flex:0 0 auto;
+  color:#111;
+  font:400 1.15rem/1 'Work Sans',sans-serif;
+  padding-top:3px;
+}
+#publications .publication-row:hover h3{
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+body:has(#publications.is-active){background:#fff !important;}
+body:has(#publications.is-active) #menuButton,
+body:has(#publications.is-active) .menu-button{
+  color:#111 !important;background:transparent !important;opacity:1 !important;
+  visibility:visible !important;pointer-events:auto !important;z-index:10020 !important;
+}
+body:has(#publications.is-active) #menuButton svg line,
+body:has(#publications.is-active) .menu-button svg line{stroke:#111 !important;}
+@media(max-width:700px){
+  #publications > .publications-clean-inner{
+    width:calc(100% - 36px);
+    padding-top:100px;
+  }
+  #publications .publications-clean-inner h2{margin-bottom:46px}
+  #publications .publications-group{margin-top:36px}
+  #publications .publication-row{padding:21px 0;gap:16px}
+}
+</style>
+
 </head>
 <body>
 
@@ -2985,18 +3078,45 @@ body:has(#exhibitions.is-active) .menu-button svg line{
 
 
     <section id="publications">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <p class="section-num">04 — Publications</p>
-            <h2>Publications</h2>
-          </div>
+  <div class="publications-clean-inner">
+    <h2>Publications</h2>
+
+    <div class="publications-group">
+      <p class="publications-group-title">Publications</p>
+
+      <a class="publication-row" href="https://kurating.com/ray-darlingtons-persistent-visions-of-realism-in-acrylic/" target="_blank" rel="noopener">
+        <div>
+          <span class="publication-source">Kurating</span>
+          <h3>Ray Darlington’s Persistent Visions of Realism in Acrylic</h3>
+          <p>Ebri Kowaki</p>
         </div>
-        <div class="publication-list">
-          <!-- Add press, interviews, catalogues and publication features here. -->
+        <span class="publication-arrow">↗</span>
+      </a>
+
+      <a class="publication-row" href="https://www.vanguardngr.com/2026/08/darlington-raymond-and-the-keepers-promenade-bafa-art-exhibition/" target="_blank" rel="noopener">
+        <div>
+          <span class="publication-source">Vanguard</span>
+          <h3>Darlington Raymond and the Keepers Promenade BAFA Art Exhibition</h3>
+          <p>Ebri Kowaki</p>
         </div>
-      </div>
-    </section>
+        <span class="publication-arrow">↗</span>
+      </a>
+    </div>
+
+    <div class="publications-group featured-publication-group">
+      <p class="publications-group-title">Featured Publication</p>
+
+      <a class="publication-row" href="https://www.thisdaylive.com/2026/07/31/reflection-explores-identity-memory-and-human-experience-at-one-art-gallery/" target="_blank" rel="noopener">
+        <div>
+          <span class="publication-source">THISDAYLIVE</span>
+          <h3>Reflection Explores Identity, Memory and Human Experience at One Art Gallery</h3>
+          <p>Yinka Olatunbosun</p>
+        </div>
+        <span class="publication-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
 
     <section id="awards">
       <div class="wrap">
@@ -3226,124 +3346,83 @@ body:has(#exhibitions.is-active) .menu-button svg line{
 </script>
 
 
-<script id="limcaf-2023-folder-script">
-document.addEventListener('DOMContentLoaded', function(){
-  const row = document.querySelector('#exhibitions .limcaf-folder');
-  const detail = document.querySelector('#exhibitions .limcaf-detail');
-  const list = document.querySelector('#exhibitions .exhibition-folder-list');
-  if(!row || !detail || !list) return;
 
-  function openDetail(){
-    Array.from(list.children).forEach(function(el){
-      if(el !== detail) el.style.display = 'none';
+<script id="exhibition-folders-script">
+document.addEventListener('DOMContentLoaded', function () {
+  const section = document.getElementById('exhibitions');
+  if (!section) return;
+
+  const list = section.querySelector('.exhibition-folder-list');
+  if (!list) return;
+
+  const pairs = [
+    ['.limcaf-folder', '.limcaf-detail'],
+    ['.fragments-folder', '.fragments-detail'],
+    ['.accord-folder', '.accord-detail'],
+    ['.reflection-folder', '.reflection-detail'],
+    ['.bradford-folder', '.bradford-detail']
+  ];
+
+  function restoreList() {
+    Array.from(list.children).forEach(function (el) {
+      el.style.display = '';
+      if (el.classList.contains('exhibition-detail')) {
+        el.hidden = true;
+      }
     });
+    pairs.forEach(function (pair) {
+      const row = list.querySelector(pair[0]);
+      if (row) row.setAttribute('aria-expanded', 'false');
+    });
+    section.scrollTop = 0;
+    window.scrollTo(0, 0);
+  }
+
+  function openFolder(row, detail) {
+    Array.from(list.children).forEach(function (el) {
+      el.style.display = 'none';
+      if (el.classList.contains('exhibition-detail')) {
+        el.hidden = true;
+      }
+    });
+
+    detail.style.display = '';
     detail.hidden = false;
-    row.setAttribute('aria-expanded','true');
-    const section = document.getElementById('exhibitions');
-    if(section) section.scrollTop = 0;
-    window.scrollTo(0,0);
+    row.setAttribute('aria-expanded', 'true');
+
+    section.scrollTop = 0;
+    window.scrollTo(0, 0);
   }
 
-  function closeDetail(){
+  pairs.forEach(function (pair) {
+    const row = list.querySelector(pair[0]);
+    const detail = list.querySelector(pair[1]);
+    if (!row || !detail) return;
+
     detail.hidden = true;
-    Array.from(list.children).forEach(function(el){
-      if(el !== detail) el.style.display = '';
-    });
-    row.setAttribute('aria-expanded','false');
-    window.scrollTo(0,0);
-  }
 
-  row.addEventListener('click', openDetail);
-  row.addEventListener('keydown', function(e){
-    if(e.key === 'Enter' || e.key === ' '){
-      e.preventDefault();
-      openDetail();
+    row.addEventListener('click', function () {
+      openFolder(row, detail);
+    });
+
+    row.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openFolder(row, detail);
+      }
+    });
+
+    const back = detail.querySelector('.exhibition-back');
+    if (back) {
+      back.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        restoreList();
+      });
     }
   });
-
-  const back = detail.querySelector('.exhibition-back');
-  if(back) back.addEventListener('click', closeDetail);
 });
 </script>
 
-
-<script id="fragments-folder-script">
-document.addEventListener('DOMContentLoaded', function(){
-  const row = document.querySelector('#exhibitions .fragments-folder');
-  const detail = document.querySelector('#exhibitions .fragments-detail');
-  const list = document.querySelector('#exhibitions .exhibition-folder-list');
-  if(!row || !detail || !list) return;
-
-  function hideRowsExcept(targetDetail){
-    Array.from(list.children).forEach(function(el){
-      if(el !== targetDetail) el.style.display = 'none';
-    });
-  }
-  function restoreRows(){
-    Array.from(list.children).forEach(function(el){
-      if(!el.classList.contains('exhibition-detail')) el.style.display = '';
-    });
-  }
-  function openDetail(){
-    const openDetails = list.querySelectorAll('.exhibition-detail');
-    openDetails.forEach(function(d){ d.hidden = true; });
-    hideRowsExcept(detail);
-    detail.hidden = false;
-    row.setAttribute('aria-expanded','true');
-    const section = document.getElementById('exhibitions');
-    if(section) section.scrollTop = 0;
-    window.scrollTo(0,0);
-  }
-  function closeDetail(){
-    detail.hidden = true;
-    restoreRows();
-    row.setAttribute('aria-expanded','false');
-    window.scrollTo(0,0);
-  }
-
-  row.addEventListener('click', openDetail);
-  row.addEventListener('keydown', function(e){
-    if(e.key === 'Enter' || e.key === ' '){
-      e.preventDefault();
-      openDetail();
-    }
-  });
-  const back = detail.querySelector('.fragments-back');
-  if(back) back.addEventListener('click', closeDetail);
-});
-</script>
-
-<script id="accord-folder-script">
-document.addEventListener('DOMContentLoaded',function(){
- const row=document.querySelector('#exhibitions .accord-folder'), detail=document.querySelector('#exhibitions .accord-detail'), list=document.querySelector('#exhibitions .exhibition-folder-list');
- if(!row||!detail||!list)return;
- function openIt(){Array.from(list.children).forEach(el=>{if(el!==detail)el.style.display='none'});detail.hidden=false;row.setAttribute('aria-expanded','true');window.scrollTo(0,0)}
- function closeIt(){detail.hidden=true;Array.from(list.children).forEach(el=>{if(el!==detail)el.style.display=''});row.setAttribute('aria-expanded','false');window.scrollTo(0,0)}
- row.addEventListener('click',openIt); row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openIt()}});
- const back=detail.querySelector('.accord-back'); if(back)back.addEventListener('click',closeIt);
-});
-</script>
-<script id="reflection-folder-script">
-document.addEventListener('DOMContentLoaded',function(){
- const row=document.querySelector('#exhibitions .reflection-folder'), detail=document.querySelector('#exhibitions .reflection-detail'), list=document.querySelector('#exhibitions .exhibition-folder-list');
- if(!row||!detail||!list)return;
- function openIt(){Array.from(list.children).forEach(el=>{if(el!==detail)el.style.display='none'});detail.hidden=false;row.setAttribute('aria-expanded','true');window.scrollTo(0,0)}
- function closeIt(){detail.hidden=true;Array.from(list.children).forEach(el=>{if(el!==detail)el.style.display=''});row.setAttribute('aria-expanded','false');window.scrollTo(0,0)}
- row.addEventListener('click',openIt);
- row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openIt()}});
- const back=detail.querySelector('.reflection-back'); if(back)back.addEventListener('click',closeIt);
-});
-</script>
-<script id="bradford-folder-script">
-document.addEventListener('DOMContentLoaded',function(){
- const row=document.querySelector('#exhibitions .bradford-folder'),detail=document.querySelector('#exhibitions .bradford-detail'),list=document.querySelector('#exhibitions .exhibition-folder-list');
- if(!row||!detail||!list)return;
- function openIt(){Array.from(list.children).forEach(el=>{if(el!==detail)el.style.display='none'});detail.hidden=false;row.setAttribute('aria-expanded','true');window.scrollTo(0,0)}
- function closeIt(){detail.hidden=true;Array.from(list.children).forEach(el=>{if(el!==detail)el.style.display=''});row.setAttribute('aria-expanded','false');window.scrollTo(0,0)}
- row.addEventListener('click',openIt);
- row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openIt()}});
- const back=detail.querySelector('.bradford-back');if(back)back.addEventListener('click',closeIt);
-});
-</script>
 </body>
 </html>
