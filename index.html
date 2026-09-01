@@ -2433,8 +2433,10 @@ body:has(#publications.is-active) .menu-button svg line{
 }
 
 /* Hide existing Awards/Publications page content for now, without removing it */
-#awards > *:not(.page-header):not(.section-header),
-#publications > *:not(.page-header):not(.section-header){
+#awards > *:not(.page-header):not(.section-header){
+  display:none !important;
+}
+#publications > *:not(.page-header):not(.section-header):not(.publications-clean-inner){
   display:none !important;
 }
 @media(max-width:700px){
