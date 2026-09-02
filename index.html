@@ -3058,25 +3058,19 @@ body:has(#awards.is-active) .menu-button svg line{stroke:#111 !important;}
 <style id="visual-exhibitions-contact-update">
 /* Exhibition thumbnail strip */
 #exhibitions .exhibition-folder-list{
-  display:flex !important;
-  gap:18px !important;
-  overflow-x:auto !important;
-  overflow-y:hidden !important;
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:34px 22px !important;
+  overflow:visible !important;
   border-top:0 !important;
   padding:0 0 18px !important;
-  scroll-snap-type:x proximity;
-  -webkit-overflow-scrolling:touch;
 }
-#exhibitions .exhibition-folder-list::-webkit-scrollbar{height:5px}
-#exhibitions .exhibition-folder-list::-webkit-scrollbar-thumb{background:rgba(0,0,0,.22)}
 #exhibitions .exhibition-card{
   display:block !important;
-  flex:0 0 calc((100% - 54px)/4) !important;
   min-width:0 !important;
   padding:0 !important;
   border:0 !important;
   cursor:pointer;
-  scroll-snap-align:start;
 }
 #exhibitions .exhibition-card-image{
   display:block;
@@ -3122,6 +3116,7 @@ body:has(#awards.is-active) .menu-button svg line{stroke:#111 !important;}
   margin:0 auto;
 }
 #exhibitions .exhibition-back{
+  margin-top:52px !important;
   margin-bottom:34px !important;
 }
 #exhibitions .single-exhibition-poster{
@@ -3154,7 +3149,7 @@ body:has(#awards.is-active) .menu-button svg line{stroke:#111 !important;}
 #contact .contact-icon-links svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.8}
 #contact .contact-form-wrap{padding-top:54px}
 #contact .contact-form-wrap h3{margin:0 0 16px;font:400 clamp(2.4rem,6vw,4.8rem)/1 'Work Sans',sans-serif}
-#contact .contact-form-wrap>p{margin:0 0 22px;font:400 1rem/1.6 'Work Sans',sans-serif}
+#contact .contact-form-wrap>p{margin:0 0 34px;font:400 1rem/1.6 'Work Sans',sans-serif}
 #contact .contact-email-text{display:inline-block;margin-bottom:42px;color:#111;text-decoration:underline;text-underline-offset:4px;font:400 1.05rem/1.4 'Work Sans',sans-serif}
 #contact .contact-form{display:grid;gap:24px}
 #contact .contact-name-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
@@ -3169,18 +3164,12 @@ body:has(#awards.is-active) .menu-button svg line{stroke:#111 !important;}
   font:400 1rem/1 'Work Sans',sans-serif;cursor:pointer;
 }
 
-@media(max-width:900px){
-  #exhibitions .exhibition-card{
-    flex-basis:calc((100% - 36px)/3) !important;
-  }
-}
+
 @media(max-width:700px){
   #exhibitions .exhibition-folder-list{
-    gap:14px !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:26px 14px !important;
     padding-bottom:14px !important;
-  }
-  #exhibitions .exhibition-card{
-    flex:0 0 42% !important;
   }
   #exhibitions .exhibition-card-copy{padding-top:9px}
   #exhibitions .exhibition-card .exhibition-name{font-size:.92rem}
@@ -3721,15 +3710,19 @@ body:has(#awards.is-active) .menu-button svg line{stroke:#111 !important;}
     <div class="contact-form-wrap">
       <h3>Contact Me</h3>
       <p>You can reach out by email or send a message below.</p>
-      <a class="contact-email-text" href="mailto:raydarlington21@gmail.com">raydarlington21@gmail.com</a>
 
-      <form class="contact-form" id="portfolioContactForm">
+      <form class="contact-form" id="portfolioContactForm"
+        action="https://formsubmit.co/raydarlington21@gmail.com"
+        method="POST">
+        <input type="hidden" name="_subject" value="New website enquiry">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
         <div class="contact-name-row">
-          <label>First Name<input name="firstName" required></label>
-          <label>Last Name<input name="lastName" required></label>
+          <label>First Name<input name="First Name" required></label>
+          <label>Last Name<input name="Last Name" required></label>
         </div>
-        <label>Email<input name="email" type="email" required></label>
-        <label>Message<textarea name="message" required></textarea></label>
+        <label>Email<input name="Email" type="email" required></label>
+        <label>Message<textarea name="Message" required></textarea></label>
         <button type="submit">SEND</button>
       </form>
     </div>
@@ -3993,21 +3986,5 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-<script id="contact-mailto-script">
-document.addEventListener('DOMContentLoaded', function(){
-  const form = document.getElementById('portfolioContactForm');
-  if (!form) return;
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    const d = new FormData(form);
-    const name = ((d.get('firstName') || '') + ' ' + (d.get('lastName') || '')).trim();
-    const email = d.get('email') || '';
-    const message = d.get('message') || '';
-    const subject = encodeURIComponent('Website enquiry from ' + name);
-    const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
-    window.location.href = 'mailto:raydarlington21@gmail.com?subject=' + subject + '&body=' + body;
-  });
-});
-</script>
 </body>
 </html>
