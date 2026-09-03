@@ -3292,6 +3292,59 @@ body.home-view #menuButton .home-menu-icon line:nth-child(2){
 body:not(.home-view) .home-brand{display:block;}
 </style>
 
+
+<style id="home-final-menu-name-adjustments">
+body.home-view .home-nav{
+  position:relative !important;
+  width:100% !important;
+  min-height:76px !important;
+  padding:24px 0 0 !important;
+  display:block !important;
+}
+body.home-view #menuButton{
+  position:absolute !important;
+  top:24px !important;
+  left:50% !important;
+  right:auto !important;
+  transform:translateX(-50%) !important;
+  margin:0 !important;
+}
+body.home-view #menuButton:hover,
+body.home-view #menuButton:focus-visible{
+  transform:translateX(-50%) !important;
+}
+body.home-view #menuButton .home-menu-icon line{
+  stroke:#fff !important;
+}
+body.home-view #top .hero-content{
+  display:block !important;
+}
+body.home-view #top .hero-content h1{
+  display:block !important;
+  font-family:'Work Sans',sans-serif !important;
+  font-size:clamp(2rem,7vw,3.25rem) !important;
+  font-weight:600 !important;
+  line-height:.96 !important;
+  letter-spacing:.055em !important;
+  color:#fff !important;
+  text-transform:uppercase !important;
+  max-width:none !important;
+  margin:0 0 8px !important;
+}
+body.home-view #top .hero-content h1 br{
+  display:none !important;
+}
+body.home-view #top .hero-location{
+  display:block !important;
+  color:#fff !important;
+  font-size:clamp(.9rem,3.2vw,1.08rem) !important;
+  font-weight:400 !important;
+  letter-spacing:.08em !important;
+  line-height:1.25 !important;
+  margin:0 !important;
+}
+</style>
+
 </head>
 <body>
 
