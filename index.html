@@ -3613,6 +3613,34 @@ body.home-view #top .hero-location{
 }
 </style>
 
+
+<style id="publications-two-column-grid-final">
+#publications .publications-image-layout .publications-group{
+  display:grid !important;
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:26px 14px !important;
+  width:100% !important;
+}
+#publications .publications-image-layout .publications-group-title{
+  grid-column:1 / -1 !important;
+}
+#publications .publication-image-link{
+  width:100% !important;
+  min-width:0 !important;
+}
+#publications .publication-image-link img{
+  width:100% !important;
+  height:auto !important;
+  display:block !important;
+}
+@media(max-width:700px){
+  #publications .publications-image-layout .publications-group{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:22px 12px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
