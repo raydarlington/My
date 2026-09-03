@@ -3428,6 +3428,37 @@ body.home-view #top .hero-location{
 }
 </style>
 
+
+<style id="home-name-reference-fit">
+body.home-view #top .hero-content h1{
+  white-space:nowrap !important;
+  font-size:clamp(1.95rem,7.2vw,4.4rem) !important;
+  line-height:.95 !important;
+  letter-spacing:.055em !important;
+  width:100% !important;
+  max-width:100% !important;
+}
+body.home-view #top .hero-location{
+  margin-top:8px !important;
+}
+@media(max-width:430px){
+  body.home-view #top .hero-content{
+    padding-left:7vw !important;
+    padding-right:7vw !important;
+  }
+  body.home-view #top .hero-content h1{
+    font-size:7.1vw !important;
+  }
+}
+</style>
+
+
+<style id="home-slower-image-fade">
+#top.hero .home-slide{
+  transition:opacity 4.5s ease-in-out !important;
+}
+</style>
+
 </head>
 <body>
 
